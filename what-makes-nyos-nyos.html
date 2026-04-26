@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>What Makes NYOS, NYOS — A Remembrance</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,700;1,9..144,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #f6f0e2;
+    --cream-deep: #ede4cf;
+    --paper: #fbf7ec;
+    --ink: #1f2a24;
+    --ink-soft: #3d4a42;
+    --moss: #2f4a3a;
+    --moss-deep: #1f3328;
+    --ochre: #b8743a;
+    --rust: #9a4a2a;
+    --gold: #c9a35c;
+    --rule: #c9bfa6;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    line-height: 1.65;
+    overflow-x: hidden;
+    background-image:
+      radial-gradient(ellipse at top left, rgba(184, 116, 58, 0.06), transparent 50%),
+      radial-gradient(ellipse at bottom right, rgba(47, 74, 58, 0.05), transparent 50%);
+  }
+
+  /* Subtle paper grain */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.4;
+    z-index: 1;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.4  0 0 0 0 0.35  0 0 0 0 0.25  0 0 0 0.04 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  }
+
+  .page {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 60px 40px 100px;
+    position: relative;
+    z-index: 2;
+  }
+
+  /* ---------- Masthead ---------- */
+  .masthead {
+    border-top: 3px double var(--moss);
+    border-bottom: 1px solid var(--rule);
+    padding: 22px 0 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    font-weight: 500;
+  }
+
+  .masthead .center { letter-spacing: 0.3em; color: var(--moss); font-weight: 600; }
+
+  /* ---------- Hero ---------- */
+  .hero {
+    text-align: center;
+    padding: 90px 20px 70px;
+    position: relative;
+  }
+
+  .hero .kicker {
+    display: inline-block;
+    font-size: 12px;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--rust);
+    font-weight: 600;
+    margin-bottom: 28px;
+    padding: 6px 14px;
+    border: 1px solid var(--rust);
+    border-radius: 2px;
+  }
+
+  .hero h1 {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: clamp(46px, 7vw, 96px);
+    line-height: 0.98;
+    letter-spacing: -0.02em;
+    color: var(--moss-deep);
+    margin-bottom: 28px;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--ochre);
+    font-weight: 300;
+  }
+
+  .hero .deck {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-style: italic;
+    font-size: clamp(18px, 2vw, 22px);
+    color: var(--ink-soft);
+    max-width: 640px;
+    margin: 0 auto 40px;
+    line-height: 1.5;
+  }
+
+  .hero .byline {
+    font-size: 12px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    font-weight: 500;
+  }
+
+  .hero .byline span { color: var(--moss); font-weight: 600; }
+
+  /* Decorative ornament */
+  .ornament {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+    margin: 30px auto 0;
+    color: var(--gold);
+  }
+  .ornament .line { width: 60px; height: 1px; background: var(--rule); }
+  .ornament .dot { width: 6px; height: 6px; background: var(--ochre); border-radius: 50%; }
+
+  /* ---------- Intro Letter ---------- */
+  .letter {
+    max-width: 720px;
+    margin: 60px auto 100px;
+    padding: 50px 40px;
+    background: var(--paper);
+    border: 1px solid var(--rule);
+    box-shadow: 0 1px 0 rgba(31, 42, 36, 0.04), 30px 30px 0 -22px rgba(47, 74, 58, 0.08);
+    position: relative;
+  }
+
+  .letter::before {
+    content: "";
+    position: absolute;
+    top: 14px; left: 14px; right: 14px; bottom: 14px;
+    border: 1px solid rgba(184, 116, 58, 0.25);
+    pointer-events: none;
+  }
+
+  .letter h2 {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: 28px;
+    color: var(--moss-deep);
+    margin-bottom: 18px;
+    letter-spacing: -0.01em;
+  }
+
+  .letter p {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-size: 18px;
+    line-height: 1.7;
+    color: var(--ink);
+    margin-bottom: 16px;
+  }
+
+  .letter p:last-child { margin-bottom: 0; }
+
+  .letter .first-letter::first-letter {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 64px;
+    float: left;
+    line-height: 0.85;
+    margin: 6px 10px 0 0;
+    color: var(--ochre);
+  }
+
+  /* ---------- Remembrance Items ---------- */
+  .remembrances-header {
+    text-align: center;
+    margin-bottom: 80px;
+  }
+
+  .remembrances-header .label {
+    font-size: 11px;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--rust);
+    font-weight: 600;
+    margin-bottom: 16px;
+  }
+
+  .remembrances-header h2 {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: clamp(36px, 5vw, 56px);
+    color: var(--moss-deep);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+  }
+
+  .remembrances-header h2 em {
+    font-style: italic;
+    color: var(--ochre);
+  }
+
+  .remembrance {
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    gap: 50px;
+    padding: 60px 0;
+    border-top: 1px solid var(--rule);
+    align-items: start;
+  }
+
+  .remembrance:last-of-type { border-bottom: 1px solid var(--rule); }
+
+  .remembrance .index {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-size: 110px;
+    line-height: 0.85;
+    color: var(--ochre);
+    letter-spacing: -0.04em;
+    position: relative;
+  }
+
+  .remembrance .index::after {
+    content: "";
+    display: block;
+    width: 60px;
+    height: 2px;
+    background: var(--moss);
+    margin-top: 18px;
+  }
+
+  .remembrance h3 {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: clamp(28px, 3.5vw, 40px);
+    color: var(--moss-deep);
+    line-height: 1.05;
+    margin-bottom: 8px;
+    letter-spacing: -0.015em;
+  }
+
+  .remembrance .subtitle {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 300;
+    font-size: 17px;
+    color: var(--rust);
+    margin-bottom: 22px;
+    letter-spacing: 0.01em;
+  }
+
+  .remembrance p {
+    font-size: 16.5px;
+    line-height: 1.75;
+    color: var(--ink-soft);
+    margin-bottom: 14px;
+  }
+
+  .remembrance p:last-child { margin-bottom: 0; }
+
+  .remembrance .pull {
+    border-left: 3px solid var(--ochre);
+    padding: 4px 0 4px 22px;
+    margin: 22px 0 18px;
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 300;
+    font-size: 19px;
+    color: var(--moss-deep);
+    line-height: 1.5;
+  }
+
+  .remembrance .tag {
+    display: inline-block;
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--moss);
+    font-weight: 600;
+    padding: 5px 10px;
+    background: rgba(47, 74, 58, 0.08);
+    border-radius: 2px;
+    margin-right: 8px;
+    margin-top: 14px;
+  }
+
+  /* ---------- Closing ---------- */
+  .closing {
+    margin: 100px auto 0;
+    max-width: 760px;
+    text-align: center;
+    padding: 70px 40px;
+    background: var(--moss-deep);
+    color: var(--cream);
+    position: relative;
+  }
+
+  .closing::before {
+    content: "";
+    position: absolute;
+    top: 16px; left: 16px; right: 16px; bottom: 16px;
+    border: 1px solid rgba(201, 163, 92, 0.4);
+    pointer-events: none;
+  }
+
+  .closing .label {
+    font-size: 11px;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 600;
+    margin-bottom: 24px;
+  }
+
+  .closing h2 {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-style: italic;
+    font-size: clamp(28px, 3.5vw, 40px);
+    line-height: 1.25;
+    color: var(--cream);
+    margin-bottom: 22px;
+    letter-spacing: -0.01em;
+  }
+
+  .closing h2 em {
+    font-style: normal;
+    color: var(--gold);
+  }
+
+  .closing p {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-size: 18px;
+    color: rgba(246, 240, 226, 0.85);
+    line-height: 1.65;
+    max-width: 580px;
+    margin: 0 auto;
+  }
+
+  .closing .fb-cta {
+    display: inline-block;
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: var(--moss-deep);
+    background: var(--gold);
+    padding: 14px 34px;
+    border-radius: 3px;
+    text-decoration: none;
+    margin-top: 28px;
+    transition: background 0.2s ease, transform 0.15s ease;
+  }
+
+  .closing .fb-cta:hover { background: #d4af6a; transform: translateY(-1px); }
+
+  .closing .fb-note {
+    display: block;
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    color: rgba(246, 240, 226, 0.5);
+    margin-top: 12px;
+    font-weight: 400;
+  }
+
+  /* ---------- Footer ---------- */
+  footer {
+    margin-top: 60px;
+    padding-top: 30px;
+    border-top: 1px solid var(--rule);
+    text-align: center;
+    font-size: 11px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    font-weight: 500;
+  }
+
+  footer .school {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 300;
+    font-size: 16px;
+    text-transform: none;
+    letter-spacing: 0.02em;
+    color: var(--moss);
+    margin-top: 10px;
+  }
+
+  /* ---------- Mobile ---------- */
+  @media (max-width: 720px) {
+    .page { padding: 30px 22px 70px; }
+    .masthead { font-size: 9px; gap: 8px; flex-wrap: wrap; justify-content: center; }
+    .masthead > * { flex: 0 0 auto; }
+    .hero { padding: 50px 0 40px; }
+    .letter { padding: 36px 26px; margin: 40px auto 70px; }
+    .letter::before { top: 10px; left: 10px; right: 10px; bottom: 10px; }
+    .remembrance {
+      grid-template-columns: 1fr;
+      gap: 14px;
+      padding: 44px 0;
+    }
+    .remembrance .index { font-size: 72px; }
+    .remembrance .index::after { width: 44px; margin-top: 10px; }
+    .closing { padding: 50px 26px; margin-top: 70px; }
+    .closing::before { top: 10px; left: 10px; right: 10px; bottom: 10px; }
+  }
+
+  /* Subtle reveal animation */
+  @keyframes rise {
+    from { opacity: 0; transform: translateY(14px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero, .letter, .remembrances-header, .remembrance, .closing {
+    animation: rise 0.9s ease-out both;
+  }
+  .letter { animation-delay: 0.1s; }
+  .remembrances-header { animation-delay: 0.15s; }
+  .remembrance:nth-of-type(1) { animation-delay: 0.2s; }
+  .remembrance:nth-of-type(2) { animation-delay: 0.25s; }
+  .remembrance:nth-of-type(3) { animation-delay: 0.3s; }
+  .remembrance:nth-of-type(4) { animation-delay: 0.35s; }
+  .remembrance:nth-of-type(5) { animation-delay: 0.4s; }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- Masthead -->
+  <div class="masthead">
+    <span>Vol. I &nbsp;·&nbsp; No. 1</span>
+    <span class="center">A Parent PSA Series</span>
+    <span>For NYOS Families</span>
+  </div>
+
+  <!-- Hero -->
+  <section class="hero">
+    <span class="kicker">A Remembrance</span>
+    <h1>What Makes<br/>NYOS, <em>NYOS.</em></h1>
+    <p class="deck">A small collection of the traditions, rituals, and quiet magic that drew our families here in the first place — and the heart we hope to carry forward.</p>
+    <p class="byline">Compiled from a message by <span>Elizabeth Zimmermann</span></p>
+    <div class="ornament">
+      <span class="line"></span>
+      <span class="dot"></span>
+      <span class="line"></span>
+    </div>
+  </section>
+
+  <!-- Letter -->
+  <section class="letter">
+    <h2>A note to fellow parents</h2>
+    <p class="first-letter">Our family chose NYOS because we love this school deeply — and like so many of you, we care about protecting what makes it special. Over the last few years, things have shifted. Some of those shifts are easy to feel but hard to name.</p>
+    <p>Rather than speculate, a few of us started asking questions and looking back at the rituals and traditions that made NYOS feel like NYOS. What follows isn't a wish to return to the past. It's an invitation to remember — and to imagine how we carry these things forward, reinvented for where we are now.</p>
+    <p>Because NYOS belongs to all of us.</p>
+  </section>
+
+  <!-- Remembrances Header -->
+  <div class="remembrances-header">
+    <div class="label">Five Things We Remember</div>
+    <h2>Small rituals, <em>big roots.</em></h2>
+  </div>
+
+  <!-- 01 -->
+  <article class="remembrance">
+    <div class="index">01</div>
+    <div>
+      <h3>The Lottery Feeling</h3>
+      <div class="subtitle">When getting in felt like winning something rare.</div>
+      <p>Waitlists used to stretch for years. Families would cry — actually cry — when their child's name was finally called. There was a sense that you had been let into something, and that something was worth protecting.</p>
+      <p>Today, even some elementary grades aren't full. For a school that once felt like a lottery ticket, that's a meaningful shift worth paying attention to.</p>
+      <span class="tag">Culture &amp; Identity</span>
+    </div>
+  </article>
+
+  <!-- 02 -->
+  <article class="remembrance">
+    <div class="index">02</div>
+    <div>
+      <h3>The PALS Program</h3>
+      <div class="subtitle">A bus, a driver, and the bridge between big kids and little ones.</div>
+      <p>Back in the Kramer days, Miss Constance would drive the bus between the high school on Lamar and the elementary on Kramer, bringing the older students to spend time with the younger ones. It wasn't just transportation — it was mentorship. It was the older kids becoming someone for the younger kids to look up to.</p>
+      <div class="pull">"We were hopeful that when we merged onto one campus, PALS would be even easier to embrace. We'd love to see it return."</div>
+      <span class="tag">Mentorship</span>
+      <span class="tag">One Campus, One Family</span>
+    </div>
+  </article>
+
+  <!-- 03 -->
+  <article class="remembrance">
+    <div class="index">03</div>
+    <div>
+      <h3>The Silly Goat Parade</h3>
+      <div class="subtitle">Coach Bliss, his goats, and shirts we made just for the occasion.</div>
+      <p>Every year at the end of school, Coach Bliss would bring his goats to campus. The kids made matching shirts. They paraded behind the goats around the entire campus, laughing the whole way. It was completely silly and completely magical — the kind of thing kids talked about all summer.</p>
+      <p>Mr. Alec, an elementary teacher, has goats too. Maybe he's the next Goat Parade leader. The tradition doesn't have to look exactly like it did. It just has to keep its heart.</p>
+      <span class="tag">Joy &amp; Whimsy</span>
+    </div>
+  </article>
+
+  <!-- 04 -->
+  <article class="remembrance">
+    <div class="index">04</div>
+    <div>
+      <h3>Seniors vs. Teachers Kickball</h3>
+      <div class="subtitle">A May tradition. A small dare. A sendoff.</div>
+      <p>Every May, in the closing weeks of the school year, the seniors squared off against the teachers in a kickball tournament. Could they finally beat the people who had taught them? Sometimes yes, sometimes no — but always, it was a sendoff that felt like ours.</p>
+      <span class="tag">Senior Tradition</span>
+    </div>
+  </article>
+
+  <!-- 05 -->
+  <article class="remembrance">
+    <div class="index">05</div>
+    <div>
+      <h3>The Kramer Garden</h3>
+      <div class="subtitle">Beautiful, lush, and tended by every elementary student.</div>
+      <p>The garden at Kramer was a small green miracle — a place every elementary kid had a hand in. It taught patience, responsibility, and the deep pride of watching something you cared for actually grow. It was also one of the most visible symbols of what a community classroom could be.</p>
+      <span class="tag">Hands-On Learning</span>
+      <span class="tag">Community</span>
+    </div>
+  </article>
+
+  <!-- Closing -->
+  <section class="closing">
+    <div class="label">Looking Forward</div>
+    <h2>This isn't about going <em>backward.</em><br/>It's about not losing the heart of why we came.</h2>
+    <p>Share your memories. Share your ideas. The traditions don't need to look exactly the way they used to — they just need to be cared for, brought forward, and reinvented for the school we are today.</p>
+    <a class="fb-cta" href="https://www.facebook.com/share/v/1GaVnBpone/" target="_blank" rel="noopener">Read the Original Post &amp; Join the Conversation</a>
+    <span class="fb-note">NYOS Parents Facebook Group — join the group to view</span>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div>A Parent PSA Series &nbsp;·&nbsp; Continuing the Conversation</div>
+    <div class="school">NYOS belongs to all of us.</div>
+  </footer>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Behind the Scenes — NYOS Leadership, Decisions &amp; Timeline</title>
+<meta name="description" content="A source-based timeline of NYOS leadership changes, decision-making, and behind-the-scenes information that families deserve to understand." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,700;1,9..144,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #f6f0e2;
+    --cream-deep: #ede4cf;
+    --paper: #fbf7ec;
+    --ink: #1f2a24;
+    --ink-soft: #3d4a42;
+    --moss: #2f4a3a;
+    --moss-deep: #1f3328;
+    --ochre: #b8743a;
+    --rust: #9a4a2a;
+    --gold: #c9a35c;
+    --rule: #c9bfa6;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    line-height: 1.65;
+    overflow-x: hidden;
+    background-image:
+      radial-gradient(ellipse at top left, rgba(184, 116, 58, 0.06), transparent 50%),
+      radial-gradient(ellipse at bottom right, rgba(47, 74, 58, 0.05), transparent 50%);
+  }
+
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.4;
+    z-index: 1;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.4  0 0 0 0 0.35  0 0 0 0 0.25  0 0 0 0.04 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  }
+
+  .page {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 60px 40px 100px;
+    position: relative;
+    z-index: 2;
+  }
+
+  /* ---------- Masthead ---------- */
+  .masthead {
+    border-top: 3px double var(--moss);
+    border-bottom: 1px solid var(--rule);
+    padding: 22px 0 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    font-weight: 500;
+  }
+
+  .masthead .center { letter-spacing: 0.3em; color: var(--moss); font-weight: 600; }
+
+  .masthead a {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .masthead a:hover { color: var(--moss); }
+
+  /* ---------- Hero ---------- */
+  .hero {
+    text-align: center;
+    padding: 90px 20px 70px;
+    position: relative;
+  }
+
+  .hero .kicker {
+    display: inline-block;
+    font-size: 12px;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--rust);
+    font-weight: 600;
+    margin-bottom: 28px;
+    padding: 6px 14px;
+    border: 1px solid var(--rust);
+    border-radius: 2px;
+  }
+
+  .hero h1 {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: clamp(42px, 6.5vw, 86px);
+    line-height: 0.98;
+    letter-spacing: -0.02em;
+    color: var(--moss-deep);
+    margin-bottom: 28px;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--ochre);
+    font-weight: 300;
+  }
+
+  .hero .deck {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-style: italic;
+    font-size: clamp(18px, 2vw, 22px);
+    color: var(--ink-soft);
+    max-width: 640px;
+    margin: 0 auto 40px;
+    line-height: 1.5;
+  }
+
+  .hero .byline {
+    font-size: 12px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    font-weight: 500;
+  }
+
+  .hero .byline span { color: var(--moss); font-weight: 600; }
+
+  .ornament {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+    margin: 30px auto 0;
+    color: var(--gold);
+  }
+  .ornament .line { width: 60px; height: 1px; background: var(--rule); }
+  .ornament .dot { width: 6px; height: 6px; background: var(--ochre); border-radius: 50%; }
+
+  /* ---------- Stay Tuned ---------- */
+  .stay-tuned {
+    max-width: 720px;
+    margin: 60px auto 80px;
+    padding: 60px 40px;
+    background: var(--paper);
+    border: 1px solid var(--rule);
+    box-shadow: 0 1px 0 rgba(31, 42, 36, 0.04), 30px 30px 0 -22px rgba(47, 74, 58, 0.08);
+    position: relative;
+    text-align: center;
+  }
+
+  .stay-tuned::before {
+    content: "";
+    position: absolute;
+    top: 14px; left: 14px; right: 14px; bottom: 14px;
+    border: 1px solid rgba(184, 116, 58, 0.25);
+    pointer-events: none;
+  }
+
+  .stay-tuned .icon {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-size: 64px;
+    color: var(--ochre);
+    line-height: 1;
+    margin-bottom: 20px;
+  }
+
+  .stay-tuned h2 {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: clamp(26px, 3.5vw, 36px);
+    color: var(--moss-deep);
+    margin-bottom: 18px;
+    letter-spacing: -0.01em;
+    line-height: 1.15;
+  }
+
+  .stay-tuned h2 em {
+    font-style: italic;
+    color: var(--ochre);
+  }
+
+  .stay-tuned p {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-size: 18px;
+    line-height: 1.7;
+    color: var(--ink-soft);
+    margin-bottom: 16px;
+    max-width: 520px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .stay-tuned p:last-of-type { margin-bottom: 30px; }
+
+  .cta-button {
+    display: inline-block;
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: #fbf7ec;
+    background: var(--moss-deep);
+    padding: 14px 34px;
+    border-radius: 3px;
+    text-decoration: none;
+    transition: background 0.2s ease, transform 0.15s ease;
+  }
+
+  .cta-button:hover { background: var(--moss); transform: translateY(-1px); }
+
+  .back-link {
+    display: inline-block;
+    margin-top: 24px;
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: var(--moss);
+    text-decoration: none;
+    border-bottom: 1px solid var(--moss);
+    padding-bottom: 2px;
+    transition: color 0.2s ease;
+  }
+
+  .back-link:hover { color: var(--ochre); border-color: var(--ochre); }
+
+  /* ---------- Footer ---------- */
+  footer {
+    margin-top: 60px;
+    padding-top: 30px;
+    border-top: 1px solid var(--rule);
+    text-align: center;
+    font-size: 11px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    font-weight: 500;
+  }
+
+  footer .school {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 300;
+    font-size: 16px;
+    text-transform: none;
+    letter-spacing: 0.02em;
+    color: var(--moss);
+    margin-top: 10px;
+  }
+
+  /* ---------- Mobile ---------- */
+  @media (max-width: 720px) {
+    .page { padding: 30px 22px 70px; }
+    .masthead { font-size: 9px; gap: 8px; flex-wrap: wrap; justify-content: center; }
+    .masthead > * { flex: 0 0 auto; }
+    .hero { padding: 50px 0 40px; }
+    .stay-tuned { padding: 44px 26px; margin: 40px auto 60px; }
+    .stay-tuned::before { top: 10px; left: 10px; right: 10px; bottom: 10px; }
+  }
+
+  @keyframes rise {
+    from { opacity: 0; transform: translateY(14px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero, .stay-tuned {
+    animation: rise 0.9s ease-out both;
+  }
+  .stay-tuned { animation-delay: 0.1s; }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- Masthead -->
+  <div class="masthead">
+    <a href="index.html">&larr; All PSAs</a>
+    <span class="center">A Parent PSA Series</span>
+    <span>PSA No. 3</span>
+  </div>
+
+  <!-- Hero -->
+  <section class="hero">
+    <span class="kicker">PSA #3 — Coming Soon</span>
+    <h1>Behind the <em>Scenes.</em></h1>
+    <p class="deck">How decisions get made, how leadership changes happen, and what outside support looks like — information that isn't always easy to follow or find in one place.</p>
+    <p class="byline">Compiled from a message by <span>Elizabeth Zimmermann</span></p>
+    <div class="ornament">
+      <span class="line"></span>
+      <span class="dot"></span>
+      <span class="line"></span>
+    </div>
+  </section>
+
+  <!-- Stay Tuned -->
+  <section class="stay-tuned">
+    <div class="icon">03</div>
+    <h2>This PSA is <em>on its way.</em></h2>
+    <p>A parent in the community has put together a clear, source-based timeline that pulls together leadership changes, decision-making processes, and behind-the-scenes context — to make the full picture easier for families to understand.</p>
+    <p>For updates on this PSA and more, join the NYOS Parents group.</p>
+    <a class="cta-button" href="https://www.facebook.com/share/g/1S39BrwiZ7/" target="_blank" rel="noopener">Join NYOS Parents Group</a>
+    <br/>
+    <a class="back-link" href="index.html">&larr; Back to All PSAs</a>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div>NYOS Parent PSA Series &nbsp;·&nbsp; By Parents, For Parents</div>
+    <div class="school">NYOS belongs to all of us.</div>
+  </footer>
+
+</div>
+</body>
+</html>

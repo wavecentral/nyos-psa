@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>NYOS Parent PSA Series — Information, Context &amp; Transparency</title>
+<meta name="description" content="A parent-led series of public service announcements for NYOS families. Information, context, and transparency — because NYOS belongs to all of us." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,700;1,9..144,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #f6f0e2;
+    --cream-deep: #ede4cf;
+    --paper: #fbf7ec;
+    --ink: #1f2a24;
+    --ink-soft: #3d4a42;
+    --moss: #2f4a3a;
+    --moss-deep: #1f3328;
+    --ochre: #b8743a;
+    --rust: #9a4a2a;
+    --gold: #c9a35c;
+    --rule: #c9bfa6;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    line-height: 1.65;
+    overflow-x: hidden;
+    background-image:
+      radial-gradient(ellipse at top left, rgba(184, 116, 58, 0.06), transparent 50%),
+      radial-gradient(ellipse at bottom right, rgba(47, 74, 58, 0.05), transparent 50%);
+  }
+
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.4;
+    z-index: 1;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.4  0 0 0 0 0.35  0 0 0 0 0.25  0 0 0 0.04 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  }
+
+  .page {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 60px 40px 100px;
+    position: relative;
+    z-index: 2;
+  }
+
+  /* ---------- Masthead ---------- */
+  .masthead {
+    border-top: 3px double var(--moss);
+    border-bottom: 1px solid var(--rule);
+    padding: 22px 0 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    font-weight: 500;
+  }
+
+  .masthead .center { letter-spacing: 0.3em; color: var(--moss); font-weight: 600; }
+
+  /* ---------- Hero ---------- */
+  .hero {
+    text-align: center;
+    padding: 90px 20px 70px;
+    position: relative;
+  }
+
+  .hero .kicker {
+    display: inline-block;
+    font-size: 12px;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--rust);
+    font-weight: 600;
+    margin-bottom: 28px;
+    padding: 6px 14px;
+    border: 1px solid var(--rust);
+    border-radius: 2px;
+  }
+
+  .hero h1 {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: clamp(42px, 6.5vw, 86px);
+    line-height: 0.98;
+    letter-spacing: -0.02em;
+    color: var(--moss-deep);
+    margin-bottom: 28px;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--ochre);
+    font-weight: 300;
+  }
+
+  .hero .deck {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-style: italic;
+    font-size: clamp(18px, 2vw, 22px);
+    color: var(--ink-soft);
+    max-width: 640px;
+    margin: 0 auto 40px;
+    line-height: 1.5;
+  }
+
+  .ornament {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+    margin: 20px auto 0;
+    color: var(--gold);
+  }
+  .ornament .line { width: 60px; height: 1px; background: var(--rule); }
+  .ornament .dot { width: 6px; height: 6px; background: var(--ochre); border-radius: 50%; }
+
+  /* ---------- Mission Letter ---------- */
+  .letter {
+    max-width: 720px;
+    margin: 60px auto 100px;
+    padding: 50px 40px;
+    background: var(--paper);
+    border: 1px solid var(--rule);
+    box-shadow: 0 1px 0 rgba(31, 42, 36, 0.04), 30px 30px 0 -22px rgba(47, 74, 58, 0.08);
+    position: relative;
+  }
+
+  .letter::before {
+    content: "";
+    position: absolute;
+    top: 14px; left: 14px; right: 14px; bottom: 14px;
+    border: 1px solid rgba(184, 116, 58, 0.25);
+    pointer-events: none;
+  }
+
+  .letter h2 {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: 28px;
+    color: var(--moss-deep);
+    margin-bottom: 18px;
+    letter-spacing: -0.01em;
+  }
+
+  .letter p {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-size: 18px;
+    line-height: 1.7;
+    color: var(--ink);
+    margin-bottom: 16px;
+  }
+
+  .letter p:last-child { margin-bottom: 0; }
+
+  .letter .first-letter::first-letter {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 64px;
+    float: left;
+    line-height: 0.85;
+    margin: 6px 10px 0 0;
+    color: var(--ochre);
+  }
+
+  /* ---------- Contributors ---------- */
+  .contributors {
+    max-width: 720px;
+    margin: 0 auto 100px;
+    text-align: center;
+  }
+
+  .contributors .label {
+    font-size: 11px;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--rust);
+    font-weight: 600;
+    margin-bottom: 20px;
+  }
+
+  .contributors h2 {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: clamp(28px, 4vw, 40px);
+    color: var(--moss-deep);
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+    margin-bottom: 30px;
+  }
+
+  .contributors h2 em {
+    font-style: italic;
+    color: var(--ochre);
+  }
+
+  .contributor-list {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px 24px;
+  }
+
+  .contributor-list li {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: 17px;
+    color: var(--ink-soft);
+    position: relative;
+  }
+
+  .contributor-list li::before {
+    content: "·";
+    color: var(--ochre);
+    font-weight: 700;
+    margin-right: 0;
+    display: none;
+  }
+
+  .contributor-list li:not(:last-child)::after {
+    content: "·";
+    color: var(--ochre);
+    font-weight: 700;
+    margin-left: 24px;
+    position: absolute;
+  }
+
+  /* ---------- PSA Listing ---------- */
+  .psa-listing-header {
+    text-align: center;
+    margin-bottom: 60px;
+  }
+
+  .psa-listing-header .label {
+    font-size: 11px;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--rust);
+    font-weight: 600;
+    margin-bottom: 16px;
+  }
+
+  .psa-listing-header h2 {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: clamp(36px, 5vw, 56px);
+    color: var(--moss-deep);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+  }
+
+  .psa-listing-header h2 em {
+    font-style: italic;
+    color: var(--ochre);
+  }
+
+  .psa-card {
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    gap: 40px;
+    padding: 50px 0;
+    border-top: 1px solid var(--rule);
+    align-items: start;
+    text-decoration: none;
+    color: inherit;
+    transition: opacity 0.2s ease;
+  }
+
+  a.psa-card:hover { opacity: 0.8; }
+
+  .psa-card:last-of-type { border-bottom: 1px solid var(--rule); }
+
+  .psa-card .number {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-size: 80px;
+    line-height: 0.85;
+    color: var(--ochre);
+    letter-spacing: -0.04em;
+  }
+
+  .psa-card .number::after {
+    content: "";
+    display: block;
+    width: 50px;
+    height: 2px;
+    background: var(--moss);
+    margin-top: 14px;
+  }
+
+  .psa-card h3 {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: clamp(24px, 3vw, 34px);
+    color: var(--moss-deep);
+    line-height: 1.1;
+    margin-bottom: 6px;
+    letter-spacing: -0.015em;
+  }
+
+  .psa-card .card-subtitle {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 300;
+    font-size: 16px;
+    color: var(--rust);
+    margin-bottom: 14px;
+  }
+
+  .psa-card .card-desc {
+    font-size: 15.5px;
+    line-height: 1.7;
+    color: var(--ink-soft);
+  }
+
+  .psa-card .status {
+    display: inline-block;
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    font-weight: 600;
+    padding: 5px 10px;
+    border-radius: 2px;
+    margin-top: 14px;
+  }
+
+  .psa-card .status.live {
+    color: var(--moss);
+    background: rgba(47, 74, 58, 0.10);
+  }
+
+  .psa-card .status.coming {
+    color: var(--ochre);
+    background: rgba(184, 116, 58, 0.10);
+  }
+
+  .read-link {
+    display: inline-block;
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: var(--moss);
+    margin-top: 14px;
+    border-bottom: 1px solid var(--moss);
+    padding-bottom: 2px;
+    margin-right: 16px;
+  }
+
+  /* ---------- CTA ---------- */
+  .cta {
+    margin: 100px auto 0;
+    max-width: 760px;
+    text-align: center;
+    padding: 70px 40px;
+    background: var(--moss-deep);
+    color: var(--cream);
+    position: relative;
+  }
+
+  .cta::before {
+    content: "";
+    position: absolute;
+    top: 16px; left: 16px; right: 16px; bottom: 16px;
+    border: 1px solid rgba(201, 163, 92, 0.4);
+    pointer-events: none;
+  }
+
+  .cta .label {
+    font-size: 11px;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 600;
+    margin-bottom: 24px;
+  }
+
+  .cta h2 {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-style: italic;
+    font-size: clamp(26px, 3.5vw, 38px);
+    line-height: 1.25;
+    color: var(--cream);
+    margin-bottom: 22px;
+    letter-spacing: -0.01em;
+  }
+
+  .cta h2 em {
+    font-style: normal;
+    color: var(--gold);
+  }
+
+  .cta p {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-size: 18px;
+    color: rgba(246, 240, 226, 0.85);
+    line-height: 1.65;
+    max-width: 540px;
+    margin: 0 auto 30px;
+  }
+
+  .cta-button {
+    display: inline-block;
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: var(--moss-deep);
+    background: var(--gold);
+    padding: 14px 34px;
+    border-radius: 3px;
+    text-decoration: none;
+    transition: background 0.2s ease, transform 0.15s ease;
+  }
+
+  .cta-button:hover { background: #d4af6a; transform: translateY(-1px); }
+
+  /* ---------- Footer ---------- */
+  footer {
+    margin-top: 60px;
+    padding-top: 30px;
+    border-top: 1px solid var(--rule);
+    text-align: center;
+    font-size: 11px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    font-weight: 500;
+  }
+
+  footer .school {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 300;
+    font-size: 16px;
+    text-transform: none;
+    letter-spacing: 0.02em;
+    color: var(--moss);
+    margin-top: 10px;
+  }
+
+  /* ---------- Mobile ---------- */
+  @media (max-width: 720px) {
+    .page { padding: 30px 22px 70px; }
+    .masthead { font-size: 9px; gap: 8px; flex-wrap: wrap; justify-content: center; }
+    .masthead > * { flex: 0 0 auto; }
+    .hero { padding: 50px 0 40px; }
+    .letter { padding: 36px 26px; margin: 40px auto 70px; }
+    .letter::before { top: 10px; left: 10px; right: 10px; bottom: 10px; }
+    .contributors { margin-bottom: 70px; }
+    .contributor-list { gap: 6px 18px; }
+    .psa-card {
+      grid-template-columns: 1fr;
+      gap: 14px;
+      padding: 40px 0;
+    }
+    .psa-card .number { font-size: 56px; }
+    .psa-card .number::after { width: 40px; margin-top: 10px; }
+    .cta { padding: 50px 26px; margin-top: 70px; }
+    .cta::before { top: 10px; left: 10px; right: 10px; bottom: 10px; }
+  }
+
+  @keyframes rise {
+    from { opacity: 0; transform: translateY(14px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero, .letter, .contributors, .psa-listing-header, .psa-card, .cta {
+    animation: rise 0.9s ease-out both;
+  }
+  .letter { animation-delay: 0.1s; }
+  .contributors { animation-delay: 0.15s; }
+  .psa-listing-header { animation-delay: 0.2s; }
+  .psa-card:nth-of-type(1) { animation-delay: 0.25s; }
+  .psa-card:nth-of-type(2) { animation-delay: 0.3s; }
+  .psa-card:nth-of-type(3) { animation-delay: 0.35s; }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- Masthead -->
+  <div class="masthead">
+    <span>Parent-Led Initiative</span>
+    <span class="center">A Parent PSA Series</span>
+    <span>For NYOS Families</span>
+  </div>
+
+  <!-- Hero -->
+  <section class="hero">
+    <span class="kicker">Public Service Announcements</span>
+    <h1>Information, Context<br/>&amp; <em>Transparency.</em></h1>
+    <p class="deck">A parent-led series of updates for the NYOS community — simple, factual, and grounded in the belief that families deserve to understand the full picture.</p>
+    <div class="ornament">
+      <span class="line"></span>
+      <span class="dot"></span>
+      <span class="line"></span>
+    </div>
+  </section>
+
+  <!-- Mission Letter -->
+  <section class="letter">
+    <h2>Why this series exists</h2>
+    <p class="first-letter">Our families chose NYOS because we love this school deeply. Like so many of you, we care about protecting what makes it special. But over the last few years, a lot of parents — especially longtime families — have felt like something has shifted.</p>
+    <p>Programs are different. The culture has changed. Things that used to feel really intentional feel a little less clear. So instead of speculating, a few of us started asking questions — looking into timelines, leadership changes, how decisions get made, and things happening behind the scenes that most families never really hear about.</p>
+    <p>This series is just that: simple, factual parent updates. Information, context, and transparency — so families can come together and be informed. Because NYOS belongs to all of us.</p>
+  </section>
+
+  <!-- Contributors -->
+  <section class="contributors">
+    <div class="label">The Team Behind This Effort</div>
+    <h2>Parents who <em>care.</em></h2>
+    <ul class="contributor-list">
+      <li>Elizabeth Zimmerman</li>
+      <li>Tiffany Savener</li>
+      <li>Katie Lee</li>
+      <li>Suzie Ferguson</li>
+      <li>Michelle Cruz</li>
+      <li>Candra McGee</li>
+      <li>Samuel Farias</li>
+    </ul>
+  </section>
+
+  <!-- PSA Listing Header -->
+  <div class="psa-listing-header">
+    <div class="label">The Series</div>
+    <h2>Parent PSA <em>Updates</em></h2>
+  </div>
+
+  <!-- PSA #1 -->
+  <a class="psa-card" href="what-makes-nyos-nyos.html">
+    <div class="number">01</div>
+    <div>
+      <h3>What Makes NYOS, NYOS</h3>
+      <div class="card-subtitle">A remembrance of traditions, rituals, and the quiet magic that drew our families here.</div>
+      <p class="card-desc">From the lottery feeling and the PALS program to Coach Bliss's Silly Goat Parade — a look back at the heart of what made families choose NYOS in the first place, and what we hope to carry forward.</p>
+      <span class="read-link">Read PSA &rarr;</span>
+      <span class="status live">Published</span>
+    </div>
+  </a>
+
+  <!-- PSA #2 -->
+  <a class="psa-card" href="what-makes-nyos-not-ordinary.html">
+    <div class="number">02</div>
+    <div>
+      <h3>What Makes NYOS Not Ordinary?</h3>
+      <div class="card-subtitle">The teachers speak — in their own words.</div>
+      <p class="card-desc">In December 2023, NYOS teachers made a video for the school board about what made this place feel different — the family feel, student relationships, and creativity at the core. A powerful reminder of what we want NYOS to feel like moving forward.</p>
+      <span class="status coming">Coming Soon</span>
+    </div>
+  </a>
+
+  <!-- PSA #3 -->
+  <a class="psa-card" href="nyos-behind-the-scenes-timeline.html">
+    <div class="number">03</div>
+    <div>
+      <h3>Behind the Scenes</h3>
+      <div class="card-subtitle">How decisions get made, and what families rarely hear about.</div>
+      <p class="card-desc">A source-based timeline pulling together leadership changes, decision-making processes, and outside support — assembled to make information that isn't always easy to find accessible to the families who deserve to see it.</p>
+      <span class="status coming">Coming Soon</span>
+    </div>
+  </a>
+
+  <!-- CTA -->
+  <section class="cta">
+    <div class="label">Stay Connected</div>
+    <h2>For updates on new PSAs <em>and more</em> — join the conversation.</h2>
+    <p>The NYOS Parents group is where we share new announcements, discuss what matters, and keep each other informed. Come be part of it.</p>
+    <a class="cta-button" href="https://www.facebook.com/share/g/1S39BrwiZ7/" target="_blank" rel="noopener">Join NYOS Parents Group</a>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div>NYOS Parent PSA Series &nbsp;·&nbsp; By Parents, For Parents</div>
+    <div class="school">NYOS belongs to all of us.</div>
+  </footer>
+
+</div>
+</body>
+</html>
