@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>What Makes NYOS Not Ordinary? — A Parent PSA</title>
-<meta name="description" content="In December 2023, NYOS teachers spoke to the school board about what makes this place different. Their words are a powerful reminder of the heart of NYOS." />
+<title>What Makes NYOS Not Ordinary? — The Teachers Speak</title>
+<meta name="description" content="A parent PSA revisiting the December 2023 NYOS board presentation and teacher testimonials about what makes NYOS not your ordinary school." />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,700;1,9..144,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -24,6 +24,7 @@
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
+
   html { scroll-behavior: smooth; }
 
   body {
@@ -77,10 +78,10 @@
   .masthead a {
     color: inherit;
     text-decoration: none;
-    transition: color 0.2s ease;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s ease;
   }
-
-  .masthead a:hover { color: var(--moss); }
+  .masthead a:hover { border-bottom-color: var(--ink-soft); }
 
   /* ---------- Hero ---------- */
   .hero {
@@ -105,7 +106,7 @@
   .hero h1 {
     font-family: 'Fraunces', serif;
     font-weight: 400;
-    font-size: clamp(42px, 6.5vw, 86px);
+    font-size: clamp(46px, 7vw, 96px);
     line-height: 0.98;
     letter-spacing: -0.02em;
     color: var(--moss-deep);
@@ -124,7 +125,7 @@
     font-style: italic;
     font-size: clamp(18px, 2vw, 22px);
     color: var(--ink-soft);
-    max-width: 640px;
+    max-width: 660px;
     margin: 0 auto 40px;
     line-height: 1.5;
   }
@@ -150,19 +151,18 @@
   .ornament .line { width: 60px; height: 1px; background: var(--rule); }
   .ornament .dot { width: 6px; height: 6px; background: var(--ochre); border-radius: 50%; }
 
-  /* ---------- Stay Tuned ---------- */
-  .stay-tuned {
+  /* ---------- Intro Letter ---------- */
+  .letter {
     max-width: 720px;
-    margin: 60px auto 80px;
-    padding: 60px 40px;
+    margin: 60px auto 100px;
+    padding: 50px 40px;
     background: var(--paper);
     border: 1px solid var(--rule);
     box-shadow: 0 1px 0 rgba(1, 52, 104, 0.04), 30px 30px 0 -22px rgba(1, 52, 104, 0.08);
     position: relative;
-    text-align: center;
   }
 
-  .stay-tuned::before {
+  .letter::before {
     content: "";
     position: absolute;
     top: 14px; left: 14px; right: 14px; bottom: 14px;
@@ -170,64 +170,205 @@
     pointer-events: none;
   }
 
-  .stay-tuned .icon {
-    font-family: 'Fraunces', serif;
-    font-weight: 300;
-    font-size: 64px;
-    color: var(--ochre);
-    line-height: 1;
-    margin-bottom: 20px;
-  }
-
-  .stay-tuned h2 {
+  .letter h2 {
     font-family: 'Fraunces', serif;
     font-weight: 400;
-    font-size: clamp(26px, 3.5vw, 36px);
+    font-size: 28px;
     color: var(--moss-deep);
     margin-bottom: 18px;
     letter-spacing: -0.01em;
-    line-height: 1.15;
   }
 
-  .stay-tuned h2 em {
-    font-style: italic;
-    color: var(--ochre);
-  }
-
-  .stay-tuned p {
+  .letter p {
     font-family: 'Fraunces', serif;
     font-weight: 300;
     font-size: 18px;
     line-height: 1.7;
-    color: var(--ink-soft);
+    color: var(--ink);
     margin-bottom: 16px;
-    max-width: 520px;
-    margin-left: auto;
-    margin-right: auto;
   }
 
-  .stay-tuned p:last-of-type { margin-bottom: 30px; }
+  .letter p:last-child { margin-bottom: 0; }
 
-  .cta-button {
-    display: inline-block;
-    font-family: 'Inter', sans-serif;
-    font-size: 12px;
-    letter-spacing: 0.25em;
+  .letter .first-letter::first-letter {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 64px;
+    float: left;
+    line-height: 0.85;
+    margin: 6px 10px 0 0;
+    color: var(--ochre);
+  }
+
+  /* ---------- Sources Header ---------- */
+  .sources-header {
+    text-align: center;
+    margin-bottom: 70px;
+  }
+
+  .sources-header .label {
+    font-size: 11px;
+    letter-spacing: 0.4em;
     text-transform: uppercase;
+    color: var(--rust);
     font-weight: 600;
-    color: #eef2f7;
-    background: var(--moss-deep);
-    padding: 14px 34px;
-    border-radius: 3px;
-    text-decoration: none;
-    transition: background 0.2s ease, transform 0.15s ease;
+    margin-bottom: 16px;
   }
 
-  .cta-button:hover { background: var(--moss); transform: translateY(-1px); }
+  .sources-header h2 {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: clamp(36px, 5vw, 56px);
+    color: var(--moss-deep);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin-bottom: 18px;
+  }
 
-  .back-link {
+  .sources-header h2 em {
+    font-style: italic;
+    color: var(--ochre);
+  }
+
+  .sources-header p {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 300;
+    font-size: 18px;
+    color: var(--ink-soft);
+    max-width: 620px;
+    margin: 0 auto;
+    line-height: 1.55;
+  }
+
+  /* ---------- Source ---------- */
+  .source {
+    padding: 70px 0;
+    border-top: 1px solid var(--rule);
+  }
+  .source:last-of-type { border-bottom: 1px solid var(--rule); }
+
+  .source-head {
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    gap: 50px;
+    align-items: start;
+    margin-bottom: 40px;
+  }
+
+  .source-head .index {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-size: 110px;
+    line-height: 0.85;
+    color: var(--ochre);
+    letter-spacing: -0.04em;
+  }
+
+  .source-head .index::after {
+    content: "";
+    display: block;
+    width: 60px;
+    height: 2px;
+    background: var(--moss);
+    margin-top: 18px;
+  }
+
+  .source-head .role {
     display: inline-block;
-    margin-top: 24px;
+    font-size: 11px;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--rust);
+    font-weight: 600;
+    margin-bottom: 12px;
+  }
+
+  .source-head h3 {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: clamp(28px, 3.5vw, 40px);
+    color: var(--moss-deep);
+    line-height: 1.05;
+    margin-bottom: 10px;
+    letter-spacing: -0.015em;
+  }
+
+  .source-head .subtitle {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 300;
+    font-size: 17px;
+    color: var(--rust);
+    letter-spacing: 0.01em;
+  }
+
+  /* Video embed */
+  .video-embed {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+    background: var(--moss-deep);
+    border: 1px solid var(--rule);
+    box-shadow: 0 1px 0 rgba(1, 52, 104, 0.04), 18px 18px 0 -14px rgba(1, 52, 104, 0.08);
+    margin-bottom: 14px;
+  }
+
+  .video-embed iframe {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+
+  .video-credit {
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    font-weight: 500;
+    margin-bottom: 28px;
+    text-align: right;
+  }
+
+  .source-summary p {
+    font-size: 16.5px;
+    line-height: 1.75;
+    color: var(--ink-soft);
+    margin-bottom: 14px;
+  }
+
+  .source-summary p:last-child { margin-bottom: 0; }
+
+  .source-summary .pull {
+    border-left: 3px solid var(--ochre);
+    padding: 4px 0 4px 22px;
+    margin: 22px 0 18px;
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 300;
+    font-size: 19px;
+    color: var(--moss-deep);
+    line-height: 1.5;
+  }
+
+  .source-resources {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px 18px;
+    margin-top: 30px;
+    padding-top: 24px;
+    border-top: 1px dashed var(--rule);
+  }
+
+  .resource-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'Inter', sans-serif;
     font-size: 12px;
     letter-spacing: 0.2em;
     text-transform: uppercase;
@@ -235,11 +376,99 @@
     color: var(--moss);
     text-decoration: none;
     border-bottom: 1px solid var(--moss);
-    padding-bottom: 2px;
-    transition: color 0.2s ease;
+    padding-bottom: 3px;
+    transition: color 0.2s ease, border-color 0.2s ease;
   }
 
-  .back-link:hover { color: var(--ochre); border-color: var(--ochre); }
+  .resource-link:hover { color: var(--ochre); border-bottom-color: var(--ochre); }
+
+  .resource-link .glyph {
+    font-size: 13px;
+    color: var(--ochre);
+  }
+
+  /* ---------- Closing ---------- */
+  .closing {
+    margin: 100px auto 0;
+    max-width: 760px;
+    text-align: center;
+    padding: 70px 40px;
+    background: var(--moss-deep);
+    color: var(--cream);
+    position: relative;
+  }
+
+  .closing::before {
+    content: "";
+    position: absolute;
+    top: 16px; left: 16px; right: 16px; bottom: 16px;
+    border: 1px solid rgba(123, 199, 225, 0.4);
+    pointer-events: none;
+  }
+
+  .closing .label {
+    font-size: 11px;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 600;
+    margin-bottom: 24px;
+  }
+
+  .closing h2 {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-style: italic;
+    font-size: clamp(28px, 3.5vw, 40px);
+    line-height: 1.25;
+    color: var(--cream);
+    margin-bottom: 22px;
+    letter-spacing: -0.01em;
+  }
+
+  .closing h2 em {
+    font-style: normal;
+    color: var(--gold);
+  }
+
+  .closing p {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-size: 18px;
+    color: rgba(238, 242, 247, 0.85);
+    line-height: 1.65;
+    max-width: 580px;
+    margin: 0 auto;
+  }
+
+  .closing .fb-cta {
+    display: inline-block;
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: var(--moss-deep);
+    background: var(--gold);
+    padding: 14px 34px;
+    border-radius: 3px;
+    text-decoration: none;
+    margin-top: 28px;
+    transition: background 0.2s ease, transform 0.15s ease;
+  }
+
+  .closing .fb-cta:hover { background: #d4af6a; transform: translateY(-1px); }
+
+  .closing .fb-note {
+    display: block;
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    color: rgba(238, 242, 247, 0.5);
+    margin-top: 12px;
+    font-weight: 400;
+  }
 
   /* ---------- Footer ---------- */
   footer {
@@ -271,8 +500,19 @@
     .masthead { font-size: 9px; gap: 8px; flex-wrap: wrap; justify-content: center; }
     .masthead > * { flex: 0 0 auto; }
     .hero { padding: 50px 0 40px; }
-    .stay-tuned { padding: 44px 26px; margin: 40px auto 60px; }
-    .stay-tuned::before { top: 10px; left: 10px; right: 10px; bottom: 10px; }
+    .letter { padding: 36px 26px; margin: 40px auto 70px; }
+    .letter::before { top: 10px; left: 10px; right: 10px; bottom: 10px; }
+    .source { padding: 50px 0; }
+    .source-head {
+      grid-template-columns: 1fr;
+      gap: 14px;
+      margin-bottom: 28px;
+    }
+    .source-head .index { font-size: 72px; }
+    .source-head .index::after { width: 44px; margin-top: 10px; }
+    .source-resources { gap: 12px 0; flex-direction: column; align-items: flex-start; }
+    .closing { padding: 50px 26px; margin-top: 70px; }
+    .closing::before { top: 10px; left: 10px; right: 10px; bottom: 10px; }
   }
 
   @keyframes rise {
@@ -280,28 +520,39 @@
     to { opacity: 1; transform: translateY(0); }
   }
 
-  .hero, .stay-tuned {
+  .hero, .letter, .sources-header, .source, .closing {
     animation: rise 0.9s ease-out both;
   }
-  .stay-tuned { animation-delay: 0.1s; }
+  .letter { animation-delay: 0.1s; }
+  .sources-header { animation-delay: 0.15s; }
+  .source:nth-of-type(1) { animation-delay: 0.2s; }
+  .source:nth-of-type(2) { animation-delay: 0.25s; }
 </style>
+<!-- Microsoft Clarity -->
+<script type="text/javascript">
+  (function(c,l,a,r,i,t,y){
+    c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+    t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+    y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+  })(window, document, "clarity", "script", "wnjv1m17ll");
+</script>
 </head>
 <body>
 <div class="page">
 
   <!-- Masthead -->
   <div class="masthead">
-    <a href="index.html">&larr; All PSAs</a>
+    <span>Vol. I &nbsp;·&nbsp; No. 2</span>
     <span class="center">A Parent PSA Series</span>
-    <span>PSA No. 2</span>
+    <span><a href="index.html">Back to All PSAs</a></span>
   </div>
 
   <!-- Hero -->
   <section class="hero">
-    <span class="kicker">PSA #2 — Coming Soon</span>
-    <h1>What Makes NYOS<br/><em>Not Ordinary?</em></h1>
-    <p class="deck">In December 2023, our incredible teachers spoke to the school board about what made this place feel different — the family feel, the relationships, the creativity at the core.</p>
-    <p class="byline">Compiled from a message by <span>Elizabeth Zimmermann</span></p>
+    <span class="kicker">The Teachers Speak</span>
+    <h1>What Makes NYOS<br/>Not <em>Ordinary?</em></h1>
+    <p class="deck">In December 2023, NYOS teachers and students made a presentation for the school board about the heart of this place. Three years later, a few parents pulled it back up — to remember, and to ask what we still want to carry forward.</p>
+    <p class="byline">Compiled from a message by <span>Elizabeth Zimmermann</span> &amp; <span>Katie Lee</span></p>
     <div class="ornament">
       <span class="line"></span>
       <span class="dot"></span>
@@ -309,20 +560,93 @@
     </div>
   </section>
 
-  <!-- Stay Tuned -->
-  <section class="stay-tuned">
-    <div class="icon">02</div>
-    <h2>This PSA is <em>on its way.</em></h2>
-    <p>We're putting the finishing touches on this one. It's a story worth telling right — about the teachers who spoke up, in their own words, about what makes NYOS special.</p>
-    <p>For updates on this PSA and more, join the NYOS Parents group.</p>
-    <a class="cta-button" href="https://www.facebook.com/share/g/1S39BrwiZ7/" target="_blank" rel="noopener">Join NYOS Parents Group</a>
-    <br/>
-    <a class="back-link" href="index.html">&larr; Back to All PSAs</a>
+  <!-- Letter -->
+  <section class="letter">
+    <h2>About this PSA</h2>
+    <p class="first-letter">A few years ago, a group of NYOS middle and high school teachers and students put together a presentation for the school board called <em>What Makes NYOS Not Ordinary?</em> It was made for board members, for new families, and for longtime ones — a record of what this school has been at its best.</p>
+    <p>Watching it now, three years on, it's a clear-eyed reminder of what we've valued at the core: the family feel and culture, small class sizes, seasoned teachers with autonomy, the modified year-round calendar, chess club, board student-members, traditions like the Goat Parade and Black History Month, and a commitment to teaching the whole child instead of teaching to the test.</p>
+    <p>The school is growing and changing — that's a fact. But growth doesn't have to mean losing the heart. Below are the two source recordings the PSA refers to, with brief summaries and links to the full transcripts.</p>
+  </section>
+
+  <!-- Sources Header -->
+  <div class="sources-header">
+    <div class="label">The Source Recordings</div>
+    <h2>In their <em>own words.</em></h2>
+    <p>Two videos from December 2023 — a board presentation and a teacher testimonial — preserved here so families can watch, read, and share.</p>
+  </div>
+
+  <!-- Source 01 — Board Meeting -->
+  <article class="source" id="board-meeting">
+    <div class="source-head">
+      <div class="index">01</div>
+      <div>
+        <div class="role">The Headliner &nbsp;·&nbsp; NYOS Board Meeting</div>
+        <h3>What Makes NYOS &ldquo;Not Ordinary&rdquo;?</h3>
+        <div class="subtitle">A presentation to the school board · December 2023</div>
+      </div>
+    </div>
+
+    <div class="video-embed">
+      <iframe src="https://drive.google.com/file/d/11Ypn4kwaTAT4iWqte07MP-eWgP5T_rUv/preview" allow="autoplay" allowfullscreen></iframe>
+    </div>
+    <p class="video-credit">Video courtesy of Katie Gowell</p>
+
+    <div class="source-summary">
+      <p>A NYOS biology teacher and coach — placed on the Board Development Committee and asked to help the board understand what makes this school different — opens the December 2023 presentation with his own story. He started teaching at NYOS in 2009, fresh from large public districts in Austin and Lockhart, and found exactly the school he had been hoping to teach in.</p>
+      <div class="pull">"Small classes so the teacher and students really get to know one another as people. Students who are interested and invested in learning. The freedom and support to teach the way I know how to best deliver it."</div>
+      <p>He frames these as the three pillars NYOS was founded on, and credits longtime teacher Gloria Ramirez for editing the testimonial video that follows — featuring NYOS teachers, parents, and students from the school's past, present, and future.</p>
+    </div>
+
+    <div class="source-resources">
+      <a class="resource-link" href="files/What%20Makes%20NYOS%20_Not%20Ordinary__.pptx">
+        <span class="glyph">&#x2913;</span> Download the Presentation (.pptx)
+      </a>
+      <a class="resource-link" href="not-ordinary-transcripts.html#board-meeting">
+        Read the Full Transcript <span class="glyph">&rarr;</span>
+      </a>
+    </div>
+  </article>
+
+  <!-- Source 02 — Teachers Perspective -->
+  <article class="source" id="teachers-perspective">
+    <div class="source-head">
+      <div class="index">02</div>
+      <div>
+        <div class="role">From the Teachers &amp; Students</div>
+        <h3>The Testimonial Video</h3>
+        <div class="subtitle">In their own words · NYOS faculty, alumni, and students</div>
+      </div>
+    </div>
+
+    <div class="video-embed">
+      <iframe src="https://drive.google.com/file/d/1bG5dtk3FFB1MNieYCEIIZheTp44jVDGr/preview" allow="autoplay" allowfullscreen></iframe>
+    </div>
+
+    <div class="source-summary">
+      <p>A compilation of testimonials from NYOS teachers, alumni, and students. Voices include Lori Ramirez (teaching at NYOS since 2002), Dori Zeitler (secondary theater, nearly ten years), and a NYOS original from the school's very first first-grade class who returned to lead chess club. Together they describe what makes NYOS not ordinary: small class sizes, teacher autonomy, the modified year-round calendar, Marzano-based practice, student board representation, K&ndash;12 mentorship, traditions like Black History Month and the Goat Parade, civic engagement and service learning, and a culture that prioritizes the whole child over test scores.</p>
+      <div class="pull">"At any other school, I'm so certain they would have started laughing at her. But our school didn't do that. One person yelled, 'You got this!' And then it was twenty seconds of thunderous applause."</div>
+      <p>Dori closes with the story of a student who blanked mid&ndash;poem at the Black History Month show — and instead of laughs or boos, the audience burst into thunderous applause until she found her words and finished. <em>That,</em> she says, <em>is what makes us special.</em></p>
+    </div>
+
+    <div class="source-resources">
+      <a class="resource-link" href="not-ordinary-transcripts.html#teachers-perspective">
+        Read the Full Transcript <span class="glyph">&rarr;</span>
+      </a>
+    </div>
+  </article>
+
+  <!-- Closing -->
+  <section class="closing">
+    <div class="label">Watch the PSA</div>
+    <h2>The original parent video, <em>and the conversation around it.</em></h2>
+    <p>Elizabeth and Katie introduced these recordings in a short PSA for the NYOS Parents Facebook Group. Watch the original post and join the conversation.</p>
+    <a class="fb-cta" href="https://www.facebook.com/share/v/1CXGJQR7mQ/" target="_blank" rel="noopener">Watch the PSA &amp; Join the Conversation</a>
+    <span class="fb-note">NYOS Parents Facebook Group — join the group to view</span>
   </section>
 
   <!-- Footer -->
   <footer>
-    <div>NYOS Parent PSA Series &nbsp;·&nbsp; By Parents, For Parents</div>
+    <div>A Parent PSA Series &nbsp;·&nbsp; Continuing the Conversation</div>
     <div class="school">NYOS belongs to all of us.</div>
   </footer>
 

@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Transcripts — What Makes NYOS Not Ordinary?</title>
+<meta name="description" content="Full transcripts of the December 2023 NYOS board meeting presentation and the teacher and student testimonial video." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,700;1,9..144,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #eef2f7;
+    --cream-deep: #dce3ec;
+    --paper: #f7f9fb;
+    --ink: #0d1b2a;
+    --ink-soft: #3d5a80;
+    --moss: #013468;
+    --moss-deep: #012148;
+    --ochre: #2a8fc2;
+    --rust: #1a6fb5;
+    --gold: #7bc7e1;
+    --rule: #c0cdd9;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    line-height: 1.65;
+    overflow-x: hidden;
+    background-image:
+      radial-gradient(ellipse at top left, rgba(1, 52, 104, 0.06), transparent 50%),
+      radial-gradient(ellipse at bottom right, rgba(123, 199, 225, 0.08), transparent 50%);
+  }
+
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.4;
+    z-index: 1;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.25  0 0 0 0 0.35  0 0 0 0 0.5  0 0 0 0.03 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  }
+
+  .page {
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 60px 40px 100px;
+    position: relative;
+    z-index: 2;
+  }
+
+  /* ---------- Masthead ---------- */
+  .masthead {
+    border-top: 3px double var(--moss);
+    border-bottom: 1px solid var(--rule);
+    padding: 22px 0 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    font-weight: 500;
+  }
+
+  .masthead .center { letter-spacing: 0.3em; color: var(--moss); font-weight: 600; }
+
+  .masthead a {
+    color: inherit;
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s ease;
+  }
+  .masthead a:hover { border-bottom-color: var(--ink-soft); }
+
+  /* ---------- Hero ---------- */
+  .hero {
+    text-align: center;
+    padding: 70px 20px 50px;
+  }
+
+  .hero .kicker {
+    display: inline-block;
+    font-size: 12px;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--rust);
+    font-weight: 600;
+    margin-bottom: 24px;
+    padding: 6px 14px;
+    border: 1px solid var(--rust);
+    border-radius: 2px;
+  }
+
+  .hero h1 {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: clamp(38px, 6vw, 72px);
+    line-height: 1.0;
+    letter-spacing: -0.02em;
+    color: var(--moss-deep);
+    margin-bottom: 24px;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--ochre);
+    font-weight: 300;
+  }
+
+  .hero .deck {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-style: italic;
+    font-size: clamp(17px, 1.8vw, 20px);
+    color: var(--ink-soft);
+    max-width: 620px;
+    margin: 0 auto 30px;
+    line-height: 1.55;
+  }
+
+  .ornament {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+    margin: 22px auto 0;
+  }
+  .ornament .line { width: 50px; height: 1px; background: var(--rule); }
+  .ornament .dot { width: 6px; height: 6px; background: var(--ochre); border-radius: 50%; }
+
+  /* ---------- TOC ---------- */
+  .toc {
+    max-width: 620px;
+    margin: 30px auto 80px;
+    padding: 26px 30px;
+    background: var(--paper);
+    border: 1px solid var(--rule);
+    text-align: left;
+  }
+
+  .toc .toc-label {
+    font-size: 10px;
+    letter-spacing: 0.34em;
+    text-transform: uppercase;
+    color: var(--rust);
+    font-weight: 600;
+    margin-bottom: 14px;
+  }
+
+  .toc ol {
+    list-style: none;
+    counter-reset: toc;
+  }
+
+  .toc li {
+    counter-increment: toc;
+    padding: 8px 0;
+    border-top: 1px dashed var(--rule);
+  }
+  .toc li:first-child { border-top: 0; }
+
+  .toc li a {
+    font-family: 'Fraunces', serif;
+    font-size: 17px;
+    color: var(--moss-deep);
+    text-decoration: none;
+    display: flex;
+    gap: 14px;
+    align-items: baseline;
+    transition: color 0.2s ease;
+  }
+
+  .toc li a::before {
+    content: counter(toc, decimal-leading-zero);
+    font-family: 'Fraunces', serif;
+    font-size: 14px;
+    color: var(--ochre);
+    font-weight: 400;
+    letter-spacing: 0;
+    min-width: 28px;
+  }
+
+  .toc li a:hover { color: var(--ochre); }
+
+  /* ---------- Transcript ---------- */
+  .transcript {
+    margin: 0 auto 100px;
+    padding-top: 60px;
+    border-top: 1px solid var(--rule);
+  }
+
+  .transcript-head {
+    margin-bottom: 36px;
+  }
+
+  .transcript-head .index {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-size: 80px;
+    line-height: 0.85;
+    color: var(--ochre);
+    letter-spacing: -0.04em;
+    margin-bottom: 18px;
+  }
+
+  .transcript-head .index::after {
+    content: "";
+    display: block;
+    width: 50px;
+    height: 2px;
+    background: var(--moss);
+    margin-top: 14px;
+  }
+
+  .transcript-head .role {
+    font-size: 11px;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--rust);
+    font-weight: 600;
+    margin-bottom: 12px;
+  }
+
+  .transcript-head h2 {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: clamp(28px, 3.5vw, 42px);
+    color: var(--moss-deep);
+    line-height: 1.05;
+    letter-spacing: -0.015em;
+    margin-bottom: 10px;
+  }
+
+  .transcript-head .subtitle {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 300;
+    font-size: 17px;
+    color: var(--rust);
+  }
+
+  /* Summary card */
+  .summary {
+    background: var(--paper);
+    border: 1px solid var(--rule);
+    padding: 28px 32px;
+    margin: 28px 0 40px;
+    position: relative;
+  }
+
+  .summary::before {
+    content: "";
+    position: absolute;
+    top: 8px; left: 8px; right: 8px; bottom: 8px;
+    border: 1px solid rgba(1, 52, 104, 0.12);
+    pointer-events: none;
+  }
+
+  .summary .summary-label {
+    font-size: 10px;
+    letter-spacing: 0.34em;
+    text-transform: uppercase;
+    color: var(--rust);
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+
+  .summary p {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-size: 17px;
+    line-height: 1.7;
+    color: var(--ink);
+    margin-bottom: 12px;
+  }
+
+  .summary p:last-child { margin-bottom: 0; }
+
+  /* Full text */
+  .full-label {
+    display: inline-block;
+    font-size: 10px;
+    letter-spacing: 0.34em;
+    text-transform: uppercase;
+    color: var(--rust);
+    font-weight: 600;
+    margin: 14px 0 18px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .full-text p {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-size: 17px;
+    line-height: 1.75;
+    color: var(--ink);
+    margin-bottom: 18px;
+  }
+
+  .full-text p:last-child { margin-bottom: 0; }
+
+  .full-text p.speaker {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--moss);
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+
+  /* Back-to-PSA link */
+  .back-link {
+    display: inline-block;
+    margin-top: 30px;
+    font-size: 11px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--moss);
+    font-weight: 600;
+    text-decoration: none;
+    border-bottom: 1px solid var(--moss);
+    padding-bottom: 3px;
+  }
+
+  .back-link:hover { color: var(--ochre); border-bottom-color: var(--ochre); }
+
+  /* ---------- Footer ---------- */
+  footer {
+    margin-top: 80px;
+    padding-top: 30px;
+    border-top: 1px solid var(--rule);
+    text-align: center;
+    font-size: 11px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    font-weight: 500;
+  }
+
+  footer .school {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 300;
+    font-size: 16px;
+    text-transform: none;
+    letter-spacing: 0.02em;
+    color: var(--moss);
+    margin-top: 10px;
+  }
+
+  /* Mobile */
+  @media (max-width: 720px) {
+    .page { padding: 30px 22px 70px; }
+    .masthead { font-size: 9px; gap: 8px; flex-wrap: wrap; justify-content: center; }
+    .masthead > * { flex: 0 0 auto; }
+    .hero { padding: 50px 0 30px; }
+    .toc { padding: 22px; margin: 20px auto 60px; }
+    .summary { padding: 22px; }
+    .summary::before { top: 6px; left: 6px; right: 6px; bottom: 6px; }
+    .transcript-head .index { font-size: 56px; }
+  }
+</style>
+<!-- Microsoft Clarity -->
+<script type="text/javascript">
+  (function(c,l,a,r,i,t,y){
+    c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+    t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+    y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+  })(window, document, "clarity", "script", "wnjv1m17ll");
+</script>
+</head>
+<body>
+<div class="page">
+
+  <!-- Masthead -->
+  <div class="masthead">
+    <span><a href="what-makes-nyos-not-ordinary.html">&larr; PSA #2</a></span>
+    <span class="center">Transcripts · December 2023</span>
+    <span><a href="index.html">All PSAs</a></span>
+  </div>
+
+  <!-- Hero -->
+  <section class="hero">
+    <span class="kicker">Full Transcripts</span>
+    <h1>What Makes NYOS<br/>Not <em>Ordinary?</em></h1>
+    <p class="deck">Summaries and full text of the December 2023 NYOS board meeting presentation and the teacher and student testimonial video, preserved here for the families who deserve to read every word.</p>
+    <div class="ornament">
+      <span class="line"></span>
+      <span class="dot"></span>
+      <span class="line"></span>
+    </div>
+  </section>
+
+  <!-- TOC -->
+  <nav class="toc">
+    <div class="toc-label">On This Page</div>
+    <ol>
+      <li><a href="#board-meeting">The Board Meeting Presentation</a></li>
+      <li><a href="#teachers-perspective">The Teachers &amp; Students Testimonial</a></li>
+    </ol>
+  </nav>
+
+  <!-- Transcript 01 — Board Meeting -->
+  <article class="transcript" id="board-meeting">
+    <header class="transcript-head">
+      <div class="index">01</div>
+      <div class="role">The Headliner &nbsp;·&nbsp; NYOS Board Meeting</div>
+      <h2>What Makes NYOS &ldquo;Not Ordinary&rdquo;?</h2>
+      <div class="subtitle">A presentation to the school board · December 2023</div>
+    </header>
+
+    <div class="summary">
+      <div class="summary-label">Summary</div>
+      <p>A NYOS biology teacher and coach — placed on the Board Development Committee and asked to help educate and inspire the board about what makes this school different — opens the December 2023 presentation with his own story. He started teaching at NYOS in 2009, fresh from large public districts in Austin and Lockhart, and a brief earlier stint at a small private school for students with learning disabilities (the CORE Academy).</p>
+      <p>For years he had answered the question &ldquo;what kind of school do you want to teach at?&rdquo; with three things: small classes where teachers and students truly know one another; students invested in learning; and the freedom and support to teach the content the way he knew best. He frames these as the three pillars NYOS — Not Your Ordinary School — was founded on, and as the things that have allowed countless members of the campus community to grow, innovate, and prosper.</p>
+      <p>He closes by introducing a video edited by longtime NYOS teacher Gloria Ramirez, featuring testimonials from teachers, parents, and students past, present, and future — preceded by a compilation of ideas distilled from the NYOS elementary staff, the basis of many of the spoken testimonials that follow.</p>
+    </div>
+
+    <div class="full-label">Full Transcript</div>
+    <div class="full-text">
+      <p>I was placed on a couple of different committees. One of the committees that I was placed onto was the board development committee, and I was tasked with the concept of putting something together to help not only educate the board but hopefully to inform and inspire the board about the types of facets and the types of concepts that make NYOS.</p>
+
+      <p>I began teaching biology in NYOS in the summer of 2009, coming fresh off a couple of stints working in large public school districts in both Austin and Lockhart, Texas. Little did I know at the time, but as I would soon find out, NYOS was just exactly the type of school in which I often hoped I could teach.</p>
+
+      <p>So a few years before, I had been asked this question often as I was progressing through the process of earning official certification to teach science at the secondary level. People would ask, what kind of school do you want to teach? Based on my own educational background — attending some of the largest public schools, as well as some of the smallest colleges and largest universities in my home state, as well as my first experiences with classroom teaching at a tiny private school geared towards students with learning disabilities — shout out to my first acronym school employer, the CORE Academy, Kids Obtaining Real Education — I was always very ready with an answer to that question.</p>
+
+      <p>&ldquo;I would want to teach,&rdquo; I would reply, &ldquo;at a school with small classes so the teacher and students really get to know one another as people.&rdquo; Folks would nod as though this was the end of my response. &ldquo;Also,&rdquo; I would continue, &ldquo;I'd like to work with students who are interested and invested in learning what I have to teach them.&rdquo; Folks would widen their eyes and nod again, agreeing that this was indeed a worthwhile hope to have for a person seeking a teaching career. And I would proceed — never being one to stop short of a full answer when asked — &ldquo;I'd like to have the freedom and support to teach the content the way that I want to teach it, the way that I know how to best deliver the knowledge and skills that the students need.&rdquo;</p>
+
+      <p>At this assertion, folks who had perhaps only been trying to make idle chit-chat and small talk would add raised eyebrows to their widened eyes and nodding heads in a dual expression of both their recognition that those are wonderful things to wish for and also their reflexive doubt that many such schools exist or that teaching jobs at any of those schools would be easy to come by.</p>
+
+      <p>In the summer of 2009, I found myself in just the right place at just the right time to become part of the school that embodied all three of these fundamental pillars of my personal professional hierarchy. Not Your Ordinary School was founded upon these very principles, and through intentional design and the collective of individual efforts continues to strive to provide these elements to every person within the community — teachers and staff, students, parents, and administrators alike.</p>
+
+      <p>For many years since, this absolute gem of a dream situation has provided me opportunities to grow and to learn, improve, innovate, and prosper as a teacher, as a coach, as a leader, but also as a follower, and as a learner, and as a human. For many countless other members of our campus community, whether their tenure has been long or short, no matter what age or role they play on campus, these opportunities have been the same. And it's this collective teaching, learning, and holistic improvement that is the hallmark of the aspects of NYOS that make it not ordinary.</p>
+
+      <p>I reached out to many other members of the campus community to give feedback for them about their own perspectives and their own experiences, which demonstrate what is not ordinary about our school. In a moment I'll share a video with you — many thanks and all credit to Ms. Gloria Ramirez, a veteran of NYOS even longer than myself, for the excellent editing and other contributions to the video that I could not have performed myself — with testimonials from NYOS teachers, parents, and students from the school's past and its present and even its future.</p>
+
+      <p>But first I'd like to share with you a compilation of ideas that were expressed by the NYOS elementary staff. Although there were many, these are a distillation of the ideas, opinions, and expressions that members of the staff compiled to provide for this exercise. So please take a moment to read these statements and to notice trends and patterns that you sense within. Many of these same trends are the basis of the spoken testimonials included in the video following. Now, make sure you've got the video.</p>
+    </div>
+
+    <a class="back-link" href="what-makes-nyos-not-ordinary.html#board-meeting">&larr; Back to PSA #2</a>
+  </article>
+
+  <!-- Transcript 02 — Teachers Perspective -->
+  <article class="transcript" id="teachers-perspective">
+    <header class="transcript-head">
+      <div class="index">02</div>
+      <div class="role">From the Teachers &amp; Students</div>
+      <h2>The Testimonial Video</h2>
+      <div class="subtitle">In their own words · NYOS faculty, alumni, and students</div>
+    </header>
+
+    <div class="summary">
+      <div class="summary-label">Summary</div>
+      <p>A compilation of testimonials from NYOS teachers, alumni, and students, edited by longtime teacher Gloria Ramirez. Voices include Lori Ramirez (teaching at NYOS since 2002), a teacher who started in 2010 and has since stayed for the small class sizes, a NYOS original from the school's very first first-grade class who returned to lead chess club, and Dori Zeitler (secondary theater arts, nearly ten years).</p>
+      <p>Together they describe the things that have made NYOS not ordinary: small class sizes, teacher autonomy and Marzano-based practice, the modified year-round calendar, student board representation, traditions like Black History Month and the Goat Parade, K&ndash;12 mentorship that lets students grow into role models, civic engagement and service learning across all grades, and a culture that prioritizes the whole child over test scores. Several speakers reflect on what's eroding as the school grows, and what they hope can be carried forward.</p>
+      <p>Dori closes with the story of a student who blanked mid&ndash;poem at the Black History Month show. Instead of laughs or boos, the audience burst into thunderous applause until she found her words again — and she came back to perform every year until she graduated. <em>That,</em> Dori says, <em>is what makes us special. We're a three-legged stool — staff, students, culture — and we need to take care of all three.</em></p>
+    </div>
+
+    <div class="full-label">Full Transcript</div>
+    <div class="full-text">
+      <p>So what makes NYOS not your ordinary school? I've been here a long time, almost since the beginning, the very first year of NYOS. And you might be wondering, why have I stuck around so long? Well, I think the main thing is just NYOS's approach to teaching the students, all the kids. Its goal was always to have quality education, but also to be a community. So education is a priority because we are a school. Almost an even bigger part — the most important part — has always been the students and treating them as individuals and bringing them into a community where they can grow as a person and as a lifelong learner.</p>
+
+      <p class="speaker">Lori Ramirez</p>
+      <p>My name is Lori Ramirez. I've been teaching at NYOS since 2002. And there's a couple of reasons that I've stayed for so long.</p>
+
+      <p>I started at NYOS about 13 years ago in 2010, and at the time that I started at NYOS, my husband and I were actually interested in the school mostly because we wanted to get our son into the school. But one of the things that stood out most to us about NYOS at the time was the fact that there were small class sizes as compared to the district area schools that we were in.</p>
+
+      <p>I also love the small class sizes. It allows us to really connect with the students on a one-on-one basis. It allows us to be able to teach more individually towards individual students and to really help them as they're maturing.</p>
+
+      <p>I'm a NYOS original — like original original — as in the very first year of school of NYOS. 25 years ago, I was in first grade, enrolled at NYOS. And then I continue to teach the chess club since I graduated. So I've never really left NYOS. NYOS is my home and it means a lot to me.</p>
+
+      <p>First and foremost is the teachers. I mean, that's not even a personal brag. That's not any sort of tooting my own horn. It's an acknowledgement of the hard work, the dedication, the sheer amount of willpower that the educators at the school have put in time and time and time and time and time again. Everything that I do, I've learned from watching my coworkers past, present, and I'm sure in the future. Without our staff, I don't know what this place would be. It's staff that hosts all the events. It's staff that is constantly communicating with parents about things. It's staff that is putting in the work with the students. Without the staff, I don't see where NYOS goes.</p>
+
+      <p>The parent volunteers are everything. It means the people who want this school to thrive are there helping. If you don't have very many volunteers, the people don't care about the school — but here at NYOS, you get so many parents who really want NYOS to be a thing and be this community thing, and they get to run these things.</p>
+
+      <p>When I first started, one of the things that I noticed for probably the first five, six years is that I was one of the younger teachers — and not young in age, but meaning most of the teachers that had been at NYOS had been at NYOS for some years. And when I was working within other districts or PISD, it seemed like the retention was super low: there were new teachers almost every year, but I had seemed to be one of the newer teachers. And I was like, I can't wait to get the tenure that everyone else has, because most of the teachers around me have been here much longer than I had. And that was when I had been here for three and four and five years. The teachers that surrounded me had been here for much longer. So I hope that we can continue to grow in the areas that set us apart, or get back to some of those areas that we possibly moved away from, to keep us not your ordinary and keep us from traditional district styles and format and structure.</p>
+
+      <p>One of the things I love most about NYOS is the teacher autonomy — that we're allowed to teach our classes in the way that we believe is best and choose our own curriculum.</p>
+
+      <p>But NYOS is always focused on the best practices for teachers. What can we do as a school? What can our teachers do to best present material to students, what's the best way to get them involved and educate them individually. NYOS has always given the flexibility for teachers to explore their strengths and weaknesses and build on them, and use the teachers as the resource — not some company with a canned curriculum saying, this is what you need to give your students. And I think that's built really strong teachers throughout the years and really helped the students learn a lot more than what they would at a traditional school.</p>
+
+      <p>And then another thing that rang supreme for me was my familiarity with Marzano and Marzano's approach. I had already been familiar with Marzano and the cognitive structure of some of the skills and high yields schools and six steps and such. And I had learned through some research about the school and their approaches to education that they used Marzano through proficiency scales and through both some accountability pieces for the staff and students alike. And so that was something that also set NYOS apart from traditional school districts.</p>
+
+      <p>When we would go on a field trip to somewhere, oftentimes things like our math problems and our history or whatever — so if we went to a history museum, we would have math problems that related to what we were studying in history and where we were going and different things like that. And that really, I think, helps coordinate things. And it wasn't just between the teachers of the same grade. We had coordination between teachers of different grades.</p>
+
+      <p>As I started to work at NYOS and started to learn more about the community, some other things that set us apart in the greatest ways is the modified year-round calendar. I would not have known what that felt like until I actually had an opportunity to work it. And so just that opportunity to have nine weeks and then a small break — that gives, for the students and staff alike, an opportunity to reset, but it also minimizes the time away so that retention is maintained.</p>
+
+      <p>When the school was founded, the idea that the board would have a student member representative was very, very important, because the students would then get a say in how they get educated. And I think that's the important part. I think the students play an important part of just how special NYOS is. And as we grow, I worry that we're not going to get that same relationship and that same camaraderie with the students because we just won't have the ability. We won't have the time. As time progresses and we get larger and larger and larger classes, we're gonna make it difficult for us to know every student, to work with every student. Organizations can't keep up.</p>
+
+      <p>Aside from that, the amount of students that we allow in has to coincide with the specific culture we have. And I think that's something important that we need to acknowledge as we move on: that if NYOS wants to maintain this special camaraderie and community, we need to make sure that we're selling that to students and families ahead of time. So it's one of those things that I worry about as we grow — that we're not going to allow for students and families and teachers to build up that relationship.</p>
+
+      <p>I've learned several life skills that are not part of the curriculum. They're not required to graduate, but they are. Covered my butt throughout my life, chess being one of them. I joined the chess club in third grade and I never left. And it taught me logical reasoning. It's probably one of the reasons why I am so strong at math. And it's also given me a way to learn other skills like teaching. It's been such a big part of my life, and it's done more for me than a lot of standard stuff.</p>
+
+      <p>Another thing that I love about NYOS is that we respect the individuals — that teachers are allowed to be themselves, to express themselves as individuals and human beings, and that we respect that about the students as well, and allow them to help discover who they are and allow them to express that.</p>
+
+      <p>The last part about what makes NYOS so special is that culture — that idea that education should not be just about test scores. It should be about the whole student. It should encompass everything about a person. And I think that's arguably maybe even just the most important part of our school: acknowledgement that kids spend eight hours of their day here from pre-K to 12th grade, that's approximately 12, 13 years of their life. And they're here eight hours a day for most of the calendar year — considering we're almost a year-round school. And so when we start to lose that culture, we start to diminish the importance of what makes us special. And part of that culture has to be acknowledging that we're changing, but we need to change in a way that maintains those cultural aspects of educating the whole child, of allowing teacher autonomy, of allowing for small class sizes.</p>
+
+      <p>I think it's an important part of NYOS that we listen to one another, we help one another. But that seems to be fading. Every year since I've been here, many of the biggest debates has been on how do we approach our students and treat them with respect, and also teach them how to treat others with respect and become the best human being they could possibly be when they graduate, hopefully from NYOS.</p>
+
+      <p>Then we have awesome opportunities for civic engagement and service learning that is from K through 12, with even homeroom involvement and social-emotional opportunities — and just being able to walk through campus and have an opportunity to teach every child at some point and know their name and know their families. And the community and family involvement is super unique to NYOS. That's not something you see in traditional districts at the capacity that we see it at NYOS.</p>
+
+      <p>Another thing that NYOS has historically been, which seems to be fading away, is poor. And a lot of people would see that as a bad thing — and definitely it's got downsides. But it also came with a sense of self-reliance. We had to learn in other ways. We had to learn not by the book. And I think that was actually a big, important aspect of NYOS. We had to learn other than just tests and grades. I didn't receive really a grade until high school.</p>
+
+      <p>One thing that makes me truly love NYOS is the pre-K through 12 aspect. As I have been here since kindergarten, I've been able to have role models and students of higher grades, and then see myself become a role model as I grow older for the students in the younger grades.</p>
+
+      <p>One of my favorite things about NYOS is that there are multiple clubs and organizations like Taffy, NHS, and PALS that allow me to branch out and become a leader. I like how the small class sizes help foster a competitive environment. I've been here since pre-K. Growing up alongside my peers and teachers, this experience I'll never forget. Those bonds I will carry with me for the rest of my life.</p>
+
+      <p>What I love about NYOS are the traditions, like the kickball tournaments, the fashion shows, and the goat parade. I want to be a teacher when I grow up, and my favorite thing about NYOS is the amazing experiences I've gotten to work with elementary kids as my mentors. My favorite part about NYOS is that we ask the kids to make a video about their favorite part about NYOS, and instead of just doing something normal, they do something amazing like this. We get to teach these kids.</p>
+
+      <p class="speaker">Dori Zeitler</p>
+      <p>Hi, my name is Dori Zeitler and I am the secondary theater arts teacher here at NYOS Charter School. And I have been teaching here for almost 10 years. And I want to tell you a little bit about what I think makes NYOS not ordinary. And it starts with my very first year here.</p>
+
+      <p>My first year here, Ms. Pierce approached me and asked me about putting together a Black History Month program. And I was really excited to help and really eager, and we had so much student involvement and excitement, and the students all worked together in various elements — from songs, step, dance, poetry, so many different things — and it was such a community event, not just students but parents, staff, community members. It was a really beautiful show. But what stands out in my memory most of all is there was one student who I had in my theater class, and I thought she was really exceptional, and I asked her to perform a poem at the show. And it was really important to me that I encourage them to memorize their poems to perform them instead of reading them from their phones or a piece of paper. And so this student had been working really, really hard on memorizing and performing her poetry piece.</p>
+
+      <p>And here comes the night of the show, and the show is going really well, and she steps up in front of almost 300 people — students, families, all these people — to perform her poem. And it starts out going wonderfully. And then about halfway through, she blanks and forgets all of her words. And she's standing there in silence, and she looks over at me, and she looks back at the audience, and she's holding the microphone. And I felt so scared, and I had this hit of despair fall into me when this happened, because I was so sure what was about to happen would be terrible. And I thought, oh no — the audience is going to start laughing at her. They're going to start booing her. And she is going to hate performing. She's going to hate doing this. She's being so embarrassed. She'll never want to do another show again. And in this moment, I'm filled with fear and dread and anxiety for her. And the silence is just echoing throughout the space.</p>
+
+      <p>But instead of laughing, instead of jeering or boos from the audience, I hear a single person yell, &ldquo;You got this!&rdquo; And then one by one, people started clapping and encouraging her. &ldquo;You can do it! Yes, keep going, keep going, you can do it!&rdquo; And it was 20 seconds of thunderous applause for her as she took a moment to remember what she was saying so that she could continue.</p>
+
+      <p>And I cannot stress this enough. At any other school, I am so certain they would have started laughing at her. They would have started booing her. They would have told her, &ldquo;Get off the stage!&rdquo; But our school didn't do that. And in that singular moment of applause, I looked around and I could not believe what was happening. And sure enough, she let that applause soak in. She took a moment, and she started over, and she finished her whole performance. And she came back and did the show year after year until she graduated.</p>
+
+      <p>And to me, that really encapsulates in an essence how special our school is — that we are a place that when students stumble, when they fall, their peers, their family rally around them to lift them up, to keep them going. It was such a beautiful moment. And at that moment, I really knew that this place was special and it was where I wanted to be and what I wanted to be a part of. And I would really hope that that would happen today in that same way if we had a student in front of everybody. But I can't say for certain it would. I really hope it would. But that is something that I think we really need to kind of hold on to — that ability of a community to rally around each other and push our students for the best.</p>
+
+      <p>Our staff, our students, and our culture are what make NYOS special, and I think without those three things, NYOS doesn't have any legs to stand on. I think we're a very solid three-legged stool. We're slowly just chipping away at those legs. We're not taking care of ourselves and it's showing — it's literally showing in the cracks. But I think with enough effort, some TLC, and some real positive listening, changing, people actively taking effort and taking the first step into correcting our mistakes, we can bring us back into what makes NYOS not your ordinary school.</p>
+
+      <p>I know what we do works, and it really makes it enjoyable for me to keep teaching, because that's always in the back of my mind: what we're doing here at NYOS works. Gives you a lot more motivation to keep going on. I've been going on for a long time. It was different, and I liked that. Not Your Ordinary is so much better.</p>
+    </div>
+
+    <a class="back-link" href="what-makes-nyos-not-ordinary.html#teachers-perspective">&larr; Back to PSA #2</a>
+  </article>
+
+  <!-- Footer -->
+  <footer>
+    <div>A Parent PSA Series &nbsp;·&nbsp; Continuing the Conversation</div>
+    <div class="school">NYOS belongs to all of us.</div>
+  </footer>
+
+</div>
+</body>
+</html>
