@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Behind the Scenes — NYOS Leadership, Decisions &amp; Timeline</title>
-<meta name="description" content="A source-based timeline of NYOS leadership changes, decision-making, and behind-the-scenes information that families deserve to understand." />
+<title>Behind the Scenes — A Parent Conversation on NYOS Leadership &amp; Decisions</title>
+<meta name="description" content="A live-streamed conversation between two NYOS parents about leadership transitions, outside firms, and what the public record actually shows. Source-based, parent-to-parent." />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,700;1,9..144,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -77,15 +77,15 @@
   .masthead a {
     color: inherit;
     text-decoration: none;
-    transition: color 0.2s ease;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s ease;
   }
-
-  .masthead a:hover { color: var(--moss); }
+  .masthead a:hover { border-bottom-color: var(--ink-soft); }
 
   /* ---------- Hero ---------- */
   .hero {
     text-align: center;
-    padding: 90px 20px 70px;
+    padding: 90px 20px 60px;
     position: relative;
   }
 
@@ -105,7 +105,7 @@
   .hero h1 {
     font-family: 'Fraunces', serif;
     font-weight: 400;
-    font-size: clamp(42px, 6.5vw, 86px);
+    font-size: clamp(46px, 7vw, 96px);
     line-height: 0.98;
     letter-spacing: -0.02em;
     color: var(--moss-deep);
@@ -124,7 +124,7 @@
     font-style: italic;
     font-size: clamp(18px, 2vw, 22px);
     color: var(--ink-soft);
-    max-width: 640px;
+    max-width: 660px;
     margin: 0 auto 40px;
     line-height: 1.5;
   }
@@ -150,19 +150,28 @@
   .ornament .line { width: 60px; height: 1px; background: var(--rule); }
   .ornament .dot { width: 6px; height: 6px; background: var(--ochre); border-radius: 50%; }
 
-  /* ---------- Stay Tuned ---------- */
-  .stay-tuned {
-    max-width: 720px;
-    margin: 60px auto 80px;
+  /* ---------- Watch Now ---------- */
+  .watch-now {
+    display: block;
+    max-width: 760px;
+    margin: 50px auto 90px;
     padding: 60px 40px;
     background: var(--paper);
     border: 1px solid var(--rule);
     box-shadow: 0 1px 0 rgba(1, 52, 104, 0.04), 30px 30px 0 -22px rgba(1, 52, 104, 0.08);
     position: relative;
     text-align: center;
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.18s ease, box-shadow 0.18s ease;
   }
 
-  .stay-tuned::before {
+  .watch-now:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 1px 0 rgba(1, 52, 104, 0.04), 30px 30px 0 -22px rgba(1, 52, 104, 0.14);
+  }
+
+  .watch-now::before {
     content: "";
     position: absolute;
     top: 14px; left: 14px; right: 14px; bottom: 14px;
@@ -170,76 +179,398 @@
     pointer-events: none;
   }
 
-  .stay-tuned .icon {
-    font-family: 'Fraunces', serif;
-    font-weight: 300;
-    font-size: 64px;
-    color: var(--ochre);
-    line-height: 1;
-    margin-bottom: 20px;
+  .watch-now .label {
+    font-size: 11px;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--rust);
+    font-weight: 600;
+    margin-bottom: 22px;
   }
 
-  .stay-tuned h2 {
+  .watch-now .play-mark {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 76px;
+    height: 76px;
+    margin: 0 auto 24px;
+    border-radius: 50%;
+    background: var(--moss-deep);
+    color: var(--gold);
+    font-size: 26px;
+    padding-left: 5px;
+    box-shadow: 0 6px 18px rgba(1, 33, 72, 0.22);
+    transition: transform 0.2s ease, background 0.2s ease;
+  }
+
+  .watch-now:hover .play-mark {
+    transform: scale(1.06);
+    background: var(--moss);
+  }
+
+  .watch-now h2 {
     font-family: 'Fraunces', serif;
     font-weight: 400;
-    font-size: clamp(26px, 3.5vw, 36px);
+    font-size: clamp(28px, 4vw, 40px);
     color: var(--moss-deep);
     margin-bottom: 18px;
     letter-spacing: -0.01em;
     line-height: 1.15;
   }
 
-  .stay-tuned h2 em {
+  .watch-now h2 em {
     font-style: italic;
     color: var(--ochre);
   }
 
-  .stay-tuned p {
+  .watch-now p {
     font-family: 'Fraunces', serif;
     font-weight: 300;
     font-size: 18px;
-    line-height: 1.7;
+    line-height: 1.65;
     color: var(--ink-soft);
-    margin-bottom: 16px;
-    max-width: 520px;
-    margin-left: auto;
-    margin-right: auto;
+    max-width: 540px;
+    margin: 0 auto 28px;
   }
 
-  .stay-tuned p:last-of-type { margin-bottom: 30px; }
-
-  .cta-button {
+  .watch-cta {
     display: inline-block;
     font-family: 'Inter', sans-serif;
     font-size: 12px;
     letter-spacing: 0.25em;
     text-transform: uppercase;
     font-weight: 600;
-    color: #eef2f7;
+    color: var(--cream);
     background: var(--moss-deep);
     padding: 14px 34px;
     border-radius: 3px;
+    transition: background 0.2s ease;
+  }
+
+  .watch-now:hover .watch-cta { background: var(--moss); }
+
+  .watch-note {
+    display: block;
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    font-weight: 500;
+    margin-top: 14px;
+  }
+
+  /* ---------- Letter ---------- */
+  .letter {
+    max-width: 720px;
+    margin: 0 auto 100px;
+    padding: 50px 40px;
+    background: var(--paper);
+    border: 1px solid var(--rule);
+    box-shadow: 0 1px 0 rgba(1, 52, 104, 0.04), 30px 30px 0 -22px rgba(1, 52, 104, 0.08);
+    position: relative;
+  }
+
+  .letter::before {
+    content: "";
+    position: absolute;
+    top: 14px; left: 14px; right: 14px; bottom: 14px;
+    border: 1px solid rgba(1, 52, 104, 0.2);
+    pointer-events: none;
+  }
+
+  .letter h2 {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: 28px;
+    color: var(--moss-deep);
+    margin-bottom: 18px;
+    letter-spacing: -0.01em;
+  }
+
+  .letter p {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-size: 18px;
+    line-height: 1.7;
+    color: var(--ink);
+    margin-bottom: 16px;
+  }
+
+  .letter p:last-child { margin-bottom: 0; }
+
+  .letter .first-letter::first-letter {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 64px;
+    float: left;
+    line-height: 0.85;
+    margin: 6px 10px 0 0;
+    color: var(--ochre);
+  }
+
+  /* ---------- Sections Header ---------- */
+  .sections-header {
+    text-align: center;
+    margin-bottom: 70px;
+  }
+
+  .sections-header .label {
+    font-size: 11px;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--rust);
+    font-weight: 600;
+    margin-bottom: 16px;
+  }
+
+  .sections-header h2 {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: clamp(36px, 5vw, 56px);
+    color: var(--moss-deep);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin-bottom: 18px;
+  }
+
+  .sections-header h2 em {
+    font-style: italic;
+    color: var(--ochre);
+  }
+
+  .sections-header p {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 300;
+    font-size: 18px;
+    color: var(--ink-soft);
+    max-width: 620px;
+    margin: 0 auto;
+    line-height: 1.55;
+  }
+
+  /* ---------- Section / Topic ---------- */
+  .topic {
+    padding: 70px 0;
+    border-top: 1px solid var(--rule);
+  }
+  .topic:last-of-type { border-bottom: 1px solid var(--rule); }
+
+  .topic-head {
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    gap: 50px;
+    align-items: start;
+    margin-bottom: 36px;
+  }
+
+  .topic-head .index {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-size: 110px;
+    line-height: 0.85;
+    color: var(--ochre);
+    letter-spacing: -0.04em;
+  }
+
+  .topic-head .index::after {
+    content: "";
+    display: block;
+    width: 60px;
+    height: 2px;
+    background: var(--moss);
+    margin-top: 18px;
+  }
+
+  .topic-head .role {
+    display: inline-block;
+    font-size: 11px;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--rust);
+    font-weight: 600;
+    margin-bottom: 12px;
+  }
+
+  .topic-head h3 {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: clamp(28px, 3.5vw, 40px);
+    color: var(--moss-deep);
+    line-height: 1.05;
+    margin-bottom: 10px;
+    letter-spacing: -0.015em;
+  }
+
+  .topic-head .subtitle {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 300;
+    font-size: 17px;
+    color: var(--rust);
+    letter-spacing: 0.01em;
+  }
+
+  .topic-body p {
+    font-size: 16.5px;
+    line-height: 1.78;
+    color: var(--ink-soft);
+    margin-bottom: 16px;
+  }
+
+  .topic-body p:last-child { margin-bottom: 0; }
+
+  .topic-body p strong {
+    color: var(--moss-deep);
+    font-weight: 600;
+  }
+
+  .topic-body .pull {
+    border-left: 3px solid var(--ochre);
+    padding: 6px 0 6px 22px;
+    margin: 24px 0 20px;
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 300;
+    font-size: 19px;
+    color: var(--moss-deep);
+    line-height: 1.5;
+  }
+
+  .topic-body .record-list {
+    list-style: none;
+    margin: 8px 0 18px;
+    padding: 0;
+  }
+
+  .topic-body .record-list li {
+    position: relative;
+    padding-left: 22px;
+    margin-bottom: 12px;
+    font-size: 16.5px;
+    line-height: 1.75;
+    color: var(--ink-soft);
+  }
+
+  .topic-body .record-list li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 12px;
+    width: 8px;
+    height: 8px;
+    background: var(--ochre);
+    border-radius: 50%;
+  }
+
+  .topic-body .record-list li strong {
+    color: var(--moss-deep);
+    font-weight: 600;
+  }
+
+  /* ---------- Closing ---------- */
+  .closing {
+    margin: 100px auto 0;
+    max-width: 780px;
+    text-align: center;
+    padding: 70px 40px;
+    background: var(--moss-deep);
+    color: var(--cream);
+    position: relative;
+  }
+
+  .closing::before {
+    content: "";
+    position: absolute;
+    top: 16px; left: 16px; right: 16px; bottom: 16px;
+    border: 1px solid rgba(123, 199, 225, 0.4);
+    pointer-events: none;
+  }
+
+  .closing .label {
+    font-size: 11px;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 600;
+    margin-bottom: 24px;
+  }
+
+  .closing h2 {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-style: italic;
+    font-size: clamp(28px, 3.5vw, 40px);
+    line-height: 1.25;
+    color: var(--cream);
+    margin-bottom: 22px;
+    letter-spacing: -0.01em;
+  }
+
+  .closing h2 em {
+    font-style: normal;
+    color: var(--gold);
+  }
+
+  .closing p {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-size: 18px;
+    color: rgba(238, 242, 247, 0.85);
+    line-height: 1.65;
+    max-width: 580px;
+    margin: 0 auto 22px;
+  }
+
+  .closing p:last-of-type { margin-bottom: 0; }
+
+  .closing .report-cta {
+    display: inline-block;
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: var(--moss-deep);
+    background: var(--gold);
+    padding: 14px 34px;
+    border-radius: 3px;
     text-decoration: none;
+    margin-top: 12px;
     transition: background 0.2s ease, transform 0.15s ease;
   }
 
-  .cta-button:hover { background: var(--moss); transform: translateY(-1px); }
+  .closing .report-cta:hover { background: #d4af6a; transform: translateY(-1px); }
 
-  .back-link {
-    display: inline-block;
-    margin-top: 24px;
-    font-size: 12px;
-    letter-spacing: 0.2em;
+  .closing .report-note {
+    display: block;
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.18em;
     text-transform: uppercase;
-    font-weight: 600;
-    color: var(--moss);
-    text-decoration: none;
-    border-bottom: 1px solid var(--moss);
-    padding-bottom: 2px;
-    transition: color 0.2s ease;
+    color: rgba(238, 242, 247, 0.55);
+    margin-top: 14px;
+    font-weight: 500;
   }
 
-  .back-link:hover { color: var(--ochre); border-color: var(--ochre); }
+  .closing .meeting-note {
+    border-top: 1px solid rgba(123, 199, 225, 0.25);
+    margin-top: 40px;
+    padding-top: 28px;
+  }
+
+  .closing .meeting-note .meeting-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 600;
+    margin-bottom: 12px;
+    display: block;
+  }
 
   /* ---------- Footer ---------- */
   footer {
@@ -270,9 +601,21 @@
     .page { padding: 30px 22px 70px; }
     .masthead { font-size: 9px; gap: 8px; flex-wrap: wrap; justify-content: center; }
     .masthead > * { flex: 0 0 auto; }
-    .hero { padding: 50px 0 40px; }
-    .stay-tuned { padding: 44px 26px; margin: 40px auto 60px; }
-    .stay-tuned::before { top: 10px; left: 10px; right: 10px; bottom: 10px; }
+    .hero { padding: 50px 0 30px; }
+    .watch-now { padding: 44px 26px; margin: 30px auto 60px; }
+    .watch-now::before { top: 10px; left: 10px; right: 10px; bottom: 10px; }
+    .letter { padding: 36px 26px; margin: 0 auto 60px; }
+    .letter::before { top: 10px; left: 10px; right: 10px; bottom: 10px; }
+    .topic { padding: 50px 0; }
+    .topic-head {
+      grid-template-columns: 1fr;
+      gap: 14px;
+      margin-bottom: 28px;
+    }
+    .topic-head .index { font-size: 72px; }
+    .topic-head .index::after { width: 44px; margin-top: 10px; }
+    .closing { padding: 50px 26px; margin-top: 70px; }
+    .closing::before { top: 10px; left: 10px; right: 10px; bottom: 10px; }
   }
 
   @keyframes rise {
@@ -280,10 +623,15 @@
     to { opacity: 1; transform: translateY(0); }
   }
 
-  .hero, .stay-tuned {
+  .hero, .watch-now, .letter, .sections-header, .topic, .closing {
     animation: rise 0.9s ease-out both;
   }
-  .stay-tuned { animation-delay: 0.1s; }
+  .watch-now { animation-delay: 0.08s; }
+  .letter { animation-delay: 0.14s; }
+  .sections-header { animation-delay: 0.18s; }
+  .topic:nth-of-type(1) { animation-delay: 0.22s; }
+  .topic:nth-of-type(2) { animation-delay: 0.26s; }
+  .topic:nth-of-type(3) { animation-delay: 0.30s; }
 </style>
 <!-- Microsoft Clarity -->
 <script type="text/javascript">
@@ -299,17 +647,17 @@
 
   <!-- Masthead -->
   <div class="masthead">
-    <a href="index.html">&larr; All PSAs</a>
+    <span>Vol. I &nbsp;·&nbsp; No. 3</span>
     <span class="center">A Parent PSA Series</span>
-    <span>PSA No. 3</span>
+    <span><a href="index.html">Back to All PSAs</a></span>
   </div>
 
   <!-- Hero -->
   <section class="hero">
-    <span class="kicker">PSA #3 — Coming Soon</span>
+    <span class="kicker">A Parent Conversation</span>
     <h1>Behind the <em>Scenes.</em></h1>
-    <p class="deck">How decisions get made, how leadership changes happen, and what outside support looks like — information that isn't always easy to follow or find in one place.</p>
-    <p class="byline">Compiled from a message by <span>Elizabeth Zimmermann</span></p>
+    <p class="deck">A live conversation between two NYOS parents about leadership transitions, outside firms, and what the public record actually shows.</p>
+    <p class="byline">With <span>Mark Garcia</span> &amp; <span>Elizabeth Zimmermann</span> &nbsp;·&nbsp; May 7, 2026</p>
     <div class="ornament">
       <span class="line"></span>
       <span class="dot"></span>
@@ -317,20 +665,108 @@
     </div>
   </section>
 
-  <!-- Stay Tuned -->
-  <section class="stay-tuned">
-    <div class="icon">03</div>
-    <h2>This PSA is <em>on its way.</em></h2>
-    <p>A parent in the community has put together a clear, source-based timeline that pulls together leadership changes, decision-making processes, and behind-the-scenes context — to make the full picture easier for families to understand.</p>
-    <p>For updates on this PSA and more, join the NYOS Parents group.</p>
-    <a class="cta-button" href="https://www.facebook.com/share/g/1S39BrwiZ7/" target="_blank" rel="noopener">Join NYOS Parents Group</a>
-    <br/>
-    <a class="back-link" href="index.html">&larr; Back to All PSAs</a>
+  <!-- Watch Now -->
+  <a class="watch-now" href="https://www.facebook.com/share/v/1HBp23sgUi/" target="_blank" rel="noopener">
+    <div class="label">Watch the Live Stream</div>
+    <span class="play-mark" aria-hidden="true">&#x25B6;</span>
+    <h2>The full conversation <em>is on Facebook.</em></h2>
+    <p>Elizabeth and Mark walk the community through what's confirmed in the public record and which questions remain open — calmly, parent to parent, with no accusations.</p>
+    <span class="watch-cta">Watch on Facebook &rarr;</span>
+    <span class="watch-note">Public post · opens in a new tab</span>
+  </a>
+
+  <!-- Letter -->
+  <section class="letter">
+    <h2>About this conversation</h2>
+    <p class="first-letter">In May 2026, two NYOS parents sat down on Facebook Live for a public conversation about how decisions get made at our school, what outside firms are doing back-office work, and what's been disclosed — or not — along the way.</p>
+    <p>The discipline of the conversation was simple: keep what's <em>confirmed in the public record</em> separate from the <em>questions that remain open.</em> No accusations. No speculation about motive. Just IRS filings, board minutes, and other charters' agendas, lined up next to each other so families can see what they show.</p>
+    <p>What follows is a parent-to-parent summary of the three things Mark and Elizabeth walked through. Every claim is footnoted in the full report linked at the bottom of this page.</p>
+  </section>
+
+  <!-- Sections Header -->
+  <div class="sections-header">
+    <div class="label">The Conversation</div>
+    <h2>Three things <em>the records show.</em></h2>
+    <p>What it took to start asking these questions, what DSS actually is, and why an undisclosed dual role matters — even if no one has been accused of anything.</p>
+  </div>
+
+  <!-- Topic 01 -->
+  <article class="topic" id="why-this-started">
+    <div class="topic-head">
+      <div class="index">01</div>
+      <div>
+        <div class="role">Why this started</div>
+        <h3>Public records, and a question every parent has a right to ask.</h3>
+        <div class="subtitle">Mark Garcia, on what made him start digging</div>
+      </div>
+    </div>
+    <div class="topic-body">
+      <p>Mark isn't a journalist or a lawyer. He's a NYOS parent who set out to <em>understand</em>, not investigate. Things at the school had started to feel different — quieter, more top-down — and every question came back as &ldquo;it's complicated&rdquo; or no answer at all.</p>
+      <p>So he started reading what was already public: IRS filings, board agendas, board minutes, vendor lists. Once those documents are lined up next to each other, he says, a story begins to take shape that nobody had walked the community through.</p>
+      <div class="pull">"Who is making decisions about our school, and who is getting paid in the process?"</div>
+      <p>That's the only question driving this work. Not a hunch, not an agenda — just public records, and a question every NYOS parent has a right to ask.</p>
+    </div>
+  </article>
+
+  <!-- Topic 02 -->
+  <article class="topic" id="what-is-dss">
+    <div class="topic-head">
+      <div class="index">02</div>
+      <div>
+        <div class="role">Q1 &nbsp;·&nbsp; What is DSS?</div>
+        <h3>A Dallas firm, ongoing payments, and a familiar pattern.</h3>
+        <div class="subtitle">Why parents should care about Dynamic Support Solutions</div>
+      </div>
+    </div>
+    <div class="topic-body">
+      <p>Dynamic Support Solutions (DSS) is a Dallas firm that sells back-office services — accounting, CFO work, payroll, IT, audit support — to charter schools. Three reasons NYOS parents should care, all from the public record:</p>
+      <p><strong>1. NYOS is paying DSS.</strong> Board minutes show a DSS audit-support contract ratified in December 2024, and a second DSS contract over $50,000 approved in July 2025. DSS is currently listed as a sponsor of the NYOS golf tournament. This is an ongoing financial relationship — not a one-time engagement.</p>
+      <p><strong>2. The interim leader who steered our recent transition is formally tied to DSS.</strong> Dr. Alan Seay — NYOS's Interim Executive Director from February through June 2024 — is listed on DSS's own corporate website as their <em>Special Advisor, School Leadership.</em> He held that title at DSS while running NYOS. He still holds it today.</p>
+      <p><strong>3. The same playbook had been run before.</strong> Public Legacy Traditional Schools — Texas board agendas show Dr. Seay was hired as Legacy's <em>interim</em> superintendent in 2022, and personally co-presented the motion that approved Dr. Mechiel Rozas as Legacy's <em>permanent</em> superintendent. Less than two years later, the same two-person sequence played out at NYOS — Dr. Seay as our interim, Dr. Rozas installed as our permanent leader. Both schools' own board records confirm it.</p>
+      <div class="pull">"DSS isn't some random vendor parents have never heard of. It's a firm with a documented tie to the person who installed our current leadership — and the same playbook had already been run at another Texas charter."</div>
+    </div>
+  </article>
+
+  <!-- Topic 03 -->
+  <article class="topic" id="conflict-of-interest">
+    <div class="topic-head">
+      <div class="index">03</div>
+      <div>
+        <div class="role">Q2 &nbsp;·&nbsp; Conflict of interest</div>
+        <h3>Confirmed, undisclosed, and still unanswered.</h3>
+        <div class="subtitle">What the public record shows — and what it can't</div>
+      </div>
+    </div>
+    <div class="topic-body">
+      <p>In plain terms: a conflict of interest is when somebody making a decision for an organization also has a financial stake on the other side of that decision. By itself, it doesn't mean anyone did anything wrong. It means there's a structural problem the public can't evaluate unless it's disclosed.</p>
+      <p>Texas law and NYOS's own policy both require board members and key staff to disclose conflicts. NYOS's own IRS filing describes that disclosure as &ldquo;voluntary.&rdquo; Here's what the public record shows:</p>
+      <ul class="record-list">
+        <li>NYOS's IRS Form 990 reports paying Dr. Seay <strong>zero dollars</strong> directly during his interim tenure. Someone else paid him — his consulting LLC, DSS, or both. The public record doesn't say which.</li>
+        <li>During and after his tenure, NYOS has entered multiple contracts with DSS, the firm where he's listed as a Special Advisor.</li>
+        <li>In October 2025 — <strong>sixteen months</strong> after his interim role ended — Dr. Seay returned to NYOS to lead a paid board training session at ESC Region 13. The board ratified those minutes 12&ndash;0. Who paid him for that is also not disclosed.</li>
+      </ul>
+      <div class="pull">"This community was never told about the dual role. There was no public disclosure that the person steering our school was simultaneously an advisor to a firm that has since received public dollars from our school."</div>
+      <p>None of this, by itself, proves wrongdoing. What it shows is an undisclosed dual role — and the only way to answer the remaining questions is the contracts, the disclosure forms, and the payment records, which the Texas Public Information Act gives parents the right to request.</p>
+    </div>
+  </article>
+
+  <!-- Closing -->
+  <section class="closing">
+    <div class="label">Read the Records Yourself</div>
+    <h2>The full report — every claim, <em>every footnote.</em></h2>
+    <p>This page is a summary. The full report — with every fact footnoted to a primary source — lives at the link below. We're not asking anyone to take our word for anything. We're asking parents to read the records.</p>
+    <a class="report-cta" href="https://wavecentral.github.io/nyos-dss-and-what-occurred" target="_blank" rel="noopener">Read the Full Report &rarr;</a>
+    <span class="report-note">wavecentral.github.io/nyos-dss-and-what-occurred</span>
+
+    <div class="meeting-note">
+      <span class="meeting-label">A Closing Thought</span>
+      <p>If we want answers in the open, the next NYOS board meeting is where the questions need to be asked — by the community, not just a few of us in the comments.</p>
+    </div>
   </section>
 
   <!-- Footer -->
   <footer>
-    <div>NYOS Parent PSA Series &nbsp;·&nbsp; By Parents, For Parents</div>
+    <div>A Parent PSA Series &nbsp;·&nbsp; Continuing the Conversation</div>
     <div class="school">NYOS belongs to all of us.</div>
   </footer>
 
